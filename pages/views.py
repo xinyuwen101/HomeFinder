@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from listings.choices import price_choices, bedroom_choices, state_choices
 
+from listings.choices import price_choices, bedroom_choices, state_choices
 from listings.models import Listing
 from realtors.models import Realtor
 
