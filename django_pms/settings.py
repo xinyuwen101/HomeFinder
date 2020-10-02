@@ -4,6 +4,10 @@ from django.contrib.messages import constants
 
 AUTH_USER_MODEL = 'accounts.User'
 
+SITE_ID = 1
+
+LOGIN_URL = '/helpdesk/login/'
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -28,10 +32,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django.contrib.sites',
     'accounts.apps.AccountsConfig',
     'contacts.apps.ContactsConfig',
     'listings.apps.ListingsConfig',
     'pages.apps.PagesConfig',
+    'markdown_deux',
+    'bootstrapform',
+    'helpdesk',
 ]
 
 MIDDLEWARE = [
