@@ -33,7 +33,6 @@ INSTALLED_APPS = [
     'contacts.apps.ContactsConfig',
     'listings.apps.ListingsConfig',
     'pages.apps.PagesConfig',
-    'realtors.apps.RealtorsConfig',
 ]
 
 MIDDLEWARE = [
