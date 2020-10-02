@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from .models import CustomUser
+from .models import User
 
 
-@admin.register(CustomUser)
+@admin.register(User)
 class ImageAdmin(admin.ModelAdmin):
     list_display = ('username', 'first_name', 'last_name', 'is_realtor', 'email')

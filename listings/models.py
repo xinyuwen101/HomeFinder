@@ -2,11 +2,11 @@ from datetime import datetime
 
 from django.db import models
 
-from accounts.models import CustomUser
+from accounts.models import User
 
 
 class Listing(models.Model):
-    realtor = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    realtor = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
     city = models.CharField(max_length=100)

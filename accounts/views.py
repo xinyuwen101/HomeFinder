@@ -1,8 +1,8 @@
 from django.contrib import messages, auth
-from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
 from contacts.models import Contact
+from accounts.models import User
 
 
 def register(request):
@@ -14,6 +14,7 @@ def register(request):
         email = request.POST['email']
         password = request.POST['password']
         password2 = request.POST['password2']
+        is_realtor = request.POST['is_realtor']
 
         # Check if passwords match
         if password == password2:
@@ -28,7 +29,7 @@ def register(request):
                 else:
                     # Looks good
                     user = User.objects.create_user(username=username, password=password, email=email,
-                                                    first_name=first_name, last_name=last_name)
+                                                    first_name=first_name, last_name=last_name, is_realtor=is_realtor)
                     # Login after register
                     # auth.login(request, user)
                     # messages.success(request, 'You are now logged in')
