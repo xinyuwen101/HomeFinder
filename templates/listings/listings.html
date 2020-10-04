@@ -39,15 +39,12 @@
                     {% for listing in listings %}
                         <div class="col-md-6 col-lg-4 mb-4">
                             <div class="card listing-preview">
-                                <a href="{% url 'listing' listing.id %}">
-                                    <img class="card-img-top" src="{{ listing.photo_main.url }}" alt="">
-
-                                    <div class="card-img-overlay">
-                                        <h2>
-                                            <span class="badge badge-secondary text-white">${{ listing.price | intcomma }}</span>
-                                        </h2>
-                                    </div>
-                                </a>
+                                <img class="card-img-top" src="{{ listing.photo_main.url }}" alt="">
+                                <div class="card-img-overlay">
+                                    <h2>
+                                        <span class="badge badge-secondary text-white">${{ listing.price | intcomma }}</span>
+                                    </h2>
+                                </div>
                                 <div class="card-body">
                                     <div class="listing-heading text-center">
                                         <h4 class="text-primary">{{ listing.title }}</h4>

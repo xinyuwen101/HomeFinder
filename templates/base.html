@@ -1,7 +1,7 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en" class="h-100">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -19,14 +19,13 @@
     <title>XW Real Estate{% block title %}{% endblock %}</title>
 </head>
 
-<body class="d-flex flex-column h-100">
-
+<body>
 <!-- NavBar -->
 {% include 'partials/navbar.html' %}
-
 <!-- Main Content -->
 {% block content %} {% endblock %}
-
+<!-- Top Bar -->
+{% include 'partials/topbar.html' %}
 <!-- Footer -->
 {% include 'partials/footer.html' %}
 
