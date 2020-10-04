@@ -1,32 +1,22 @@
-import os
 from pathlib import Path
-
-from django.contrib.messages import constants
 
 AUTH_USER_MODEL = 'accounts.User'
 
-<<<<<<< HEAD
-SITE_ID = 1
-
-LOGIN_URL = '/helpdesk/login/'
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-=======
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
->>>>>>> parent of bd78145... Update
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '_7&@3%tg0wgqfyu6rjj7t#1f-e_rj(!j3bqp*nd-4o)lu87abq'
+SECRET_KEY = '$aqc2oov%7t&nl#z_@r1s=mewz6fnh-!!q1t5(-co_8=%8t3yp'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
 
 # Application definition
 
@@ -38,14 +28,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    'django.contrib.sites',
     'accounts.apps.AccountsConfig',
     'contacts.apps.ContactsConfig',
     'listings.apps.ListingsConfig',
     'pages.apps.PagesConfig',
-    'markdown_deux',
-    'bootstrapform',
-    'helpdesk',
 ]
 
 MIDDLEWARE = [
@@ -79,19 +65,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'django_pms.wsgi.application'
 
+
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'django_pms',
-#         'USER': 'xinyuwen',
-#         'PASSWORD': '',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
 
 DATABASES = {
     'default': {
@@ -99,6 +75,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -118,6 +95,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -131,6 +109,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
@@ -138,15 +117,5 @@ USE_TZ = True
 STATICFILES_DIRS = [BASE_DIR, "static"]
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = (BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
-# Messages
-MESSAGE_TAGS = {
-    constants.ERROR: 'danger'
-}
-
-try:
-    from .local_settings import *
-except ImportError:
-    pass
