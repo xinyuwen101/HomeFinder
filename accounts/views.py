@@ -1,8 +1,8 @@
 from django.contrib import messages, auth
 from django.shortcuts import render, redirect
 
-from contacts.models import Contact
 from accounts.models import User
+from contacts.models import Contact
 
 
 def register(request):
@@ -23,20 +23,20 @@ def register(request):
                 messages.error(request, 'That username is taken')
                 return redirect('register')
             else:
-                if User.objects.filter(email=email).exists():
-                    messages.error(request, 'That email is being used')
-                    return redirect('register')
-                else:
-                    # Looks good
-                    user = User.objects.create_user(username=username, password=password, email=email,
-                                                    first_name=first_name, last_name=last_name, is_realtor=is_realtor)
-                    # Login after register
-                    # auth.login(request, user)
-                    # messages.success(request, 'You are now logged in')
-                    # return redirect('index')
-                    user.save()
-                    messages.success(request, 'You are now registered and can log in')
-                    return redirect('login')
+                # if User.objects.filter(email=email).exists() and email != '':
+                #     messages.error(request, 'That email is being used')
+                #     return redirect('register')
+                # else:
+                # Looks good
+                user = User.objects.create_user(username=username, password=password, email=email,
+                                                first_name=first_name, last_name=last_name, is_realtor=is_realtor)
+                # Login after register
+                # auth.login(request, user)
+                # messages.success(request, 'You are now logged in')
+                # return redirect('index')
+                user.save()
+                messages.success(request, 'You are now registered and can log in')
+                return redirect('login')
         else:
             messages.error(request, 'Passwords do not match')
             return redirect('register')

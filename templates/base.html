@@ -1,14 +1,14 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{% static 'css/all.css' %}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <!-- Custom -->
@@ -16,16 +16,17 @@
     <!-- Lightbox -->
     <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
 
-    <title>XW Real Estate{% block title %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %}Property Management System</title>
 </head>
 
-<body>
+<body class="d-flex flex-column h-100">
+
 <!-- NavBar -->
 {% include 'partials/navbar.html' %}
+
 <!-- Main Content -->
 {% block content %} {% endblock %}
-<!-- Top Bar -->
-{% include 'partials/topbar.html' %}
+
 <!-- Footer -->
 {% include 'partials/footer.html' %}
 
