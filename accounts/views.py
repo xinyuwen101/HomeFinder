@@ -1,20 +1,19 @@
 from django.contrib import messages, auth
 from django.shortcuts import render, redirect
 
-from accounts.models import User
+from django.contrib.auth.models import User
 from contacts.models import Contact
 
 
 def register(request):
     if request.method == 'POST':
         # Get form values
-        first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
         username = request.POST['username']
         email = request.POST['email']
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
         password = request.POST['password']
         password2 = request.POST['password2']
-        is_realtor = request.POST['is_realtor']
 
         # Check if passwords match
         if password == password2:
@@ -23,17 +22,12 @@ def register(request):
                 messages.error(request, 'That username is taken')
                 return redirect('register')
             else:
-                # if User.objects.filter(email=email).exists() and email != '':
-                #     messages.error(request, 'That email is being used')
-                #     return redirect('register')
-                # else:
-                # Looks good
                 user = User.objects.create_user(username=username, password=password, email=email,
-                                                first_name=first_name, last_name=last_name, is_realtor=is_realtor)
+                                                first_name=first_name, last_name=last_name)
                 # Login after register
-                # auth.login(request, user)
-                # messages.success(request, 'You are now logged in')
-                # return redirect('index')
+                auth.login(request, user)
+                messages.success(request, 'You are now logged in')
+                return redirect('index')
                 user.save()
                 messages.success(request, 'You are now registered and can log in')
                 return redirect('login')

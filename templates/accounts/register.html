@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %} | Register Account {% endblock %}
+{% block title %}Register Account | {% endblock %}
 
 {% block content %}
     <section id="register" class="bg-light py-5">
@@ -40,11 +40,6 @@
                                 <div class="form-group">
                                     <label for="password2">Confirm Password</label>
                                     <input type="password" name="password2" id="password2" class="form-control" required>
-                                </div>
-                                <div class="form-check">
-                                    <input type="hidden" name="is_realtor" id="is_realtor" value="False">
-                                    <input type="checkbox" name="is_realtor" id="is_realtor" class="form-check-input" value="True">
-                                    <label class="form-check-label" for="is_realtor">You are a realtor.</label>
                                 </div>
                                 <input type="submit" value="Register" class="btn btn-secondary btn-block mt-3">
                             </form>
