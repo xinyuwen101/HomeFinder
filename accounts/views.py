@@ -1,6 +1,6 @@
 from django.contrib import messages, auth
 from django.shortcuts import render, redirect
-
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from contacts.models import Contact
 
@@ -25,12 +25,12 @@ def register(request):
                 user = User.objects.create_user(username=username, password=password, email=email,
                                                 first_name=first_name, last_name=last_name)
                 # Login after register
+                user.save()
                 auth.login(request, user)
                 messages.success(request, 'You are now logged in')
                 return redirect('index')
-                user.save()
-                messages.success(request, 'You are now registered and can log in')
-                return redirect('login')
+                # messages.success(request, 'You are now registered and can log in')
+                # return redirect('login')
         else:
             messages.error(request, 'Passwords do not match')
             return redirect('register')
@@ -63,6 +63,7 @@ def logout(request):
         return redirect('index')
 
 
+@login_required
 def dashboard(request):
     user_contacts = Contact.objects.order_by('-contact_date').filter(user_id=request.user.id)
 
