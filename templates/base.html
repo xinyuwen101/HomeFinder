@@ -7,16 +7,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{% static 'css/all.css' %}">
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
     <!-- Custom -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <!-- Lightbox -->
     <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
 
-    <title>{% block title %}{% endblock %}Property</title>
+    <title>{% block title %}{% endblock %}Properties</title>
 </head>
 
 <body>
@@ -25,7 +25,9 @@
 {% include 'partials/navbar.html' %}
 
 <!-- Main Content -->
-{% block content %} {% endblock %}
+<div class="bg-light">
+    {% block content %} {% endblock %}
+</div>
 
 <!-- Footer -->
 {% include 'partials/footer.html' %}

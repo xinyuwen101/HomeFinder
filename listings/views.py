@@ -1,7 +1,11 @@
+from django.contrib import messages
+from django.contrib.auth.models import User
 from django.core.paginator import Paginator
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404
+from django.shortcuts import render, redirect
 
 from .choices import price_choices, bedroom_choices, state_choices
+from .forms import ListingForm
 from .models import Listing
 
 
@@ -71,3 +75,19 @@ def search(request):
     }
 
     return render(request, 'listings/search.html', context)
+
+
+def upload(request):
+    if request.method == 'POST':
+        form = ListingForm(request.POST, request.FILES)
+        if form.is_valid():
+            new_listing = form.save(commit=False)
+            new_listing.user = request.user
+            new_listing.save()
+            messages.success(request, 'Uploaded successfully')
+            return redirect('listings')
+        else:
+            messages.error(request, 'Information not valid')
+            return redirect('listing_upload')
+
+    return render(request, 'listings/upload.html')

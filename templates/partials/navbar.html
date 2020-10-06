@@ -2,7 +2,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="{% url 'index' %}">Property Management System</a>
+        <a class="navbar-brand" href="{% url 'index' %}">PROPERTIES</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -10,9 +10,9 @@
             <ul class="navbar-nav">
                 <li
                         {% if '/' == request.path %}
-                            class="nav-item active mr-3"
+                            class="nav-item active mx-3"
                         {% else %}
-                            class="nav-item mr-3"
+                            class="nav-item mx-3"
                         {% endif %}
                 >
                     <a class="nav-link" href="{% url 'index' %}">Home</a>
@@ -27,13 +27,22 @@
                     <a class="nav-link" href="{% url 'search' %}">Search</a>
                 </li>
                 <li
-                        {% if 'listings' in request.path and 'search' not in request.path %}
+                        {% if 'listings' in request.path and 'search' not in request.path and 'upload' not in request.path %}
                             class="nav-item active mr-3"
                         {% else %}
                             class="nav-item mr-3"
                         {% endif %}
                 >
                     <a class="nav-link" href="{% url 'listings' %}">Listings</a>
+                </li>
+                <li
+                        {% if 'upload' in request.path %}
+                            class="nav-item active mr-3"
+                        {% else %}
+                            class="nav-item mr-3"
+                        {% endif %}
+                >
+                    <a class="nav-link" href="{% url 'upload' %}">Add</a>
                 </li>
             </ul>
 
