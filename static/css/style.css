@@ -6,20 +6,15 @@ img {
     width: 100%;
 }
 
-/*.logo {*/
-/*    width: 80px;*/
-/*}*/
+.logo {
+    width: 80px;
+}
 
-/*.navbar {*/
-/*    opacity: 0.9;*/
-/*}*/
-
-/*.social a {*/
-/*    margin-right: 0.4rem;*/
-/*}*/
+.social a {
+    margin-right: 0.4rem;
+}
 
 #showcase {
-    background: url(../img/showcase.jpg) no-repeat top center fixed/cover;
     position: relative;
     min-height: 650px;
     color: #fff;
@@ -43,7 +38,6 @@ img {
 }
 
 #services {
-    background: url(../img/building.jpg) no-repeat top center fixed/cover;
     min-height: 300px;
     position: relative;
     overflow: hidden;
@@ -60,7 +54,6 @@ img {
 }
 
 #showcase-inner {
-    background: url(../img/building.jpg) no-repeat top center fixed/cover;
     position: relative;
     overflow: hidden;
     min-height: 200px;

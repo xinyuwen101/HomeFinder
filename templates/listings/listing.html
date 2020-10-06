@@ -131,7 +131,7 @@
                                 </li>
                                 <li class="list-group-item text-secondary">
                                     <i class="fas fa-bed"></i> Realtor:
-                                    <span class="float-right">{{ listing.realtor }}
+                                    <span class="float-right">{{ listing.user }}
                   </span>
                                 </li>
 
@@ -149,10 +149,10 @@
                 </div>
                 <div class="col-md-3">
                     <div class="card mb-3">
-                        <img class="card-img-top" src="{{ listing.realtor.photo.url }}" alt="">
+                        <img class="card-img-top" src="{{ listing.user.photo.url }}" alt="">
                         <div class="card-body">
                             <h5 class="card-title">Property Realtor</h5>
-                            <h6 class="text-secondary">{{ listing.realtor }}</h6>
+                            <h6 class="text-secondary">{{ listing.user }}</h6>
                         </div>
                     </div>
                     <button class="btn-primary btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">Make An
@@ -181,7 +181,7 @@
                         {% else %}
                             <input type="hidden" name="user_id" value="0">
                         {% endif %}
-                        <input type="hidden" name="realtor_email" value="{{ listing.realtor.email }}">
+                        <input type="hidden" name="realtor_email" value="{{ listing.user.email }}">
                         <input type="hidden" name="listing_id" value="{{ listing.id }}">
                         <div class="form-group">
                             <label for="property_name" class="col-form-label">Property:</label>

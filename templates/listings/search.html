@@ -9,6 +9,9 @@
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-12">
+                    <h1 class="display-4 mb-4">
+                        Property Searching
+                    </h1>
                     <form action="{% url 'search' %}">
                         <!-- Form Row 1 -->
                         <div class="form-row">
@@ -66,7 +69,7 @@
                                 </select>
                             </div>
                         </div>
-                        <button class="btn btn-secondary btn-block mt-4" type="submit">Submit form</button>
+                        <button class="btn btn-primary btn-block mt-4" type="submit">Submit form</button>
                     </form>
                 </div>
             </div>
@@ -128,7 +131,7 @@
                                     <hr>
                                     <div class="row py-2 text-secondary">
                                         <div class="col-12">
-                                            <i class="fas fa-user"></i> {{ listing.realtor }}</div>
+                                            <i class="fas fa-user"></i> {{ listing.user }}</div>
                                     </div>
                                     <div class="row text-secondary pb-2">
                                         <div class="col-6">
