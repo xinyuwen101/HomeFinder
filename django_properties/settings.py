@@ -70,7 +70,7 @@ WSGI_APPLICATION = 'django_properties.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django_pms',
+        'NAME': 'django_properties',
         'USER': 'xinyuwen',
         'PASSWORD': '',
         'HOST': 'localhost',

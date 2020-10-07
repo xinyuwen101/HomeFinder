@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render, redirect
@@ -77,6 +77,7 @@ def search(request):
     return render(request, 'listings/search.html', context)
 
 
+@login_required
 def upload(request):
     if request.method == 'POST':
         form = ListingForm(request.POST, request.FILES)
@@ -88,6 +89,8 @@ def upload(request):
             return redirect('listings')
         else:
             messages.error(request, 'Information not valid')
-            return redirect('listing_upload')
-
-    return render(request, 'listings/upload.html')
+            return redirect('upload')
+    context = {
+        'state_choices': state_choices,
+    }
+    return render(request, 'listings/upload.html', context)
