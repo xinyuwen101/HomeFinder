@@ -34,6 +34,14 @@ price_max_choices = {
     'No Max': 99999,
 }
 
+type_choices = {
+    'house': 'House',
+    'apartment': 'Apaprtment',
+    'condo': 'Condo',
+    'townhouse': 'Townhouse',
+    'other': 'Other'
+}
+
 states_choices = {
     'AK': 'Alaska',
     'AL': 'Alabama',

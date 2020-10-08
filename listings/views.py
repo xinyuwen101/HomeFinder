@@ -4,7 +4,7 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .choices import beds_min_choices, beds_max_choices, price_min_choices, price_max_choices, states_choices
+from .choices import beds_min_choices, beds_max_choices, price_min_choices, price_max_choices, type_choices, states_choices
 from .forms import ListingForm
 from .models import Listing
 
@@ -45,7 +45,7 @@ def search(request):
         if keywords:
             listings = listings.filter(
                 Q(address__icontains=keywords) | Q(city__icontains=keywords) | Q(state__icontains=keywords) | Q(
-                    zipcode__icontains=keywords) | Q(description__icontains=keywords) | Q(address2__icontains=keywords)|Q(title__icontains=keywords))
+                    zipcode__icontains=keywords) | Q(description__icontains=keywords) | Q(address2__icontains=keywords))
 
     # Beds Min
     if 'beds_min' in request.GET:
@@ -76,6 +76,7 @@ def search(request):
         'beds_max_choices': beds_max_choices,
         'price_min_choices': price_min_choices,
         'price_max_choices': price_max_choices,
+        'type_choices': type_choices,
         'listings': listings,
         'values': request.GET,
     }
