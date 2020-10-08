@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from listings.choices import beds_max_choices, beds_min_choices, states_choices
+from listings.choices import beds_min_choices, states_choices
 from listings.models import Listing
 
 

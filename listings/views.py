@@ -4,7 +4,8 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .choices import beds_min_choices, beds_max_choices, price_min_choices, price_max_choices, type_choices, states_choices
+from .choices import beds_min_choices, beds_max_choices, price_min_choices, price_max_choices, type_choices, \
+    states_choices
 from .forms import ListingForm
 from .models import Listing
 

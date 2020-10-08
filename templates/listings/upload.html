@@ -3,132 +3,132 @@
 {% block title %}Add | {% endblock %}
 
 {% block content %}
-    <section id="showcase-inner" class="showcase-search text-white py-5">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-md-12 m-auto">
-                    <h1 class="display-4 mb-4">
-                        Add Your Property
-                    </h1>
-                    <form action="{% url 'upload' %}" method="POST">
-                        {% csrf_token %}
-                        <div class="form-row">
-                            <div class="col-md-4 mb-3">
-                                <input type="text" name="address" id="address" class="form-control"
-                                       placeholder="Address" required>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <input type="text" name="unit" id="unit" class="form-control"
-                                       placeholder="Address 2">
-                            </div>
-                            <div class="col-md-2 mb-3">
-                                <input type="text" name="city" id="city" class="form-control" placeholder="City"
-                                       required>
-                            </div>
-                            <div class="col-md-1 mb-3">
-                                <select name="state" class="form-control">
-                                    <option selected="true" disabled="disabled">State</option>
-                                    {% for key, value in state_choices.items %}
-                                        <option value="{{ key }}"
-                                                {% if key == values.state %}
-                                                selected
-                                                {% endif %}
-                                        >{{ key }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <div class="col-md-2 bm-3">
-                                <input type="text" name="zipcode" id="zipcode" class="form-control"
-                                       placeholder="Zipcode" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-4 mb-3">
-                                <input type="text" name="title" class="form-control" placeholder="Title"
-                                       required>
-                            </div>
-                            <div class="col-md-2 mb-3">
-                                <input type="number" name="price" id="price" class="form-control" step="100" min="0"
-                                       placeholder="Price"
-                                       required>
-                            </div>
-                            <div class="col-md-2 mb-3">
-                                <input type="number" name="deposit" id="deposit" class="form-control"
-                                       placeholder="Deposit" min="0" step="100"
-                                       required>
-                            </div>
-                            <div class="col-md-2 mb-3">
-                                <input type="number" name="sqft" id="sqft" class="form-control" min="0" step="100"
-                                       placeholder="Sq Ft" required>
-                            </div>
-                            <div class="col-md-1 mb-3">
-                                <input type="number" name="bedrooms" id="bedrooms" class="form-control" min="0"
-                                       placeholder="Beds" required>
-                            </div>
-                            <div class="col-md-1 mb-3">
-                                <input type="number" name="bathrooms" id="bathrooms" class="form-control" min="0"
-                                       step="0.5"
-                                       placeholder="Baths" required>
-                            </div>
-                        </div>
+  <section id="showcase-inner" class="showcase-search text-white py-5">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12 m-auto">
+          <h1 class="display-4 mb-4">
+            Add Your Property
+          </h1>
+          <form action="{% url 'upload' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <input type="text" name="address" id="address" class="form-control"
+                       placeholder="Address" required>
+              </div>
+              <div class="col-md-3 mb-3">
+                <input type="text" name="unit" id="unit" class="form-control"
+                       placeholder="Address 2">
+              </div>
+              <div class="col-md-2 mb-3">
+                <input type="text" name="city" id="city" class="form-control" placeholder="City"
+                       required>
+              </div>
+              <div class="col-md-1 mb-3">
+                <select name="state" class="form-control">
+                  <option selected="true" disabled="disabled">State</option>
+                  {% for key, value in state_choices.items %}
+                    <option value="{{ key }}"
+                        {% if key == values.state %}
+                            selected
+                        {% endif %}
+                    >{{ key }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+              <div class="col-md-2 bm-3">
+                <input type="text" name="zipcode" id="zipcode" class="form-control"
+                       placeholder="Zipcode" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <input type="text" name="title" class="form-control" placeholder="Title"
+                       required>
+              </div>
+              <div class="col-md-2 mb-3">
+                <input type="number" name="price" id="price" class="form-control" step="100" min="0"
+                       placeholder="Price"
+                       required>
+              </div>
+              <div class="col-md-2 mb-3">
+                <input type="number" name="deposit" id="deposit" class="form-control"
+                       placeholder="Deposit" min="0" step="100"
+                       required>
+              </div>
+              <div class="col-md-2 mb-3">
+                <input type="number" name="sqft" id="sqft" class="form-control" min="0" step="100"
+                       placeholder="Sq Ft" required>
+              </div>
+              <div class="col-md-1 mb-3">
+                <input type="number" name="bedrooms" id="bedrooms" class="form-control" min="0"
+                       placeholder="Beds" required>
+              </div>
+              <div class="col-md-1 mb-3">
+                <input type="number" name="bathrooms" id="bathrooms" class="form-control" min="0"
+                       step="0.5"
+                       placeholder="Baths" required>
+              </div>
+            </div>
 
 
-                        <div class="form-row">
-                            <div class="col-md-12 mb-3">
+            <div class="form-row">
+              <div class="col-md-12 mb-3">
                             <textarea name="description" id="description" class="form-control" placeholder="Description"
                                       rows="6"></textarea>
-                            </div>
-                        </div>
-
-
-                        <div class="form-row">
-                            <div class="col-md-4 mb-3">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="photo_main" name="photo_main"
-                                           required>
-                                    <label class="custom-file-label" for="photo_main">Main photo</label>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="photo_1" name="photo_1">
-                                    <label class="custom-file-label" for="photo_1">Photo 1</label>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="photo_2" name="photo_2">
-                                    <label class="custom-file-label" for="photo_2">Photo 2</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="col-md-4 mb-3">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="photo_3" name="photo_3">
-                                    <label class="custom-file-label" for="photo_3">Photo 3</label>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="photo_4" name="photo_4">
-                                    <label class="custom-file-label" for="photo_4">Photo 4</label>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="photo_5" name="photo_5">
-                                    <label class="custom-file-label" for="photo_5">Photo 5</label>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <input type="submit" value="Add" class="btn btn-primary btn-block mb-3">
-                    </form>
-                </div>
+              </div>
             </div>
+
+
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="photo_main" name="photo_main"
+                         required>
+                  <label class="custom-file-label" for="photo_main">Main photo</label>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="photo_1" name="photo_1">
+                  <label class="custom-file-label" for="photo_1">Photo 1</label>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="photo_2" name="photo_2">
+                  <label class="custom-file-label" for="photo_2">Photo 2</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="photo_3" name="photo_3">
+                  <label class="custom-file-label" for="photo_3">Photo 3</label>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="photo_4" name="photo_4">
+                  <label class="custom-file-label" for="photo_4">Photo 4</label>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="photo_5" name="photo_5">
+                  <label class="custom-file-label" for="photo_5">Photo 5</label>
+                </div>
+              </div>
+            </div>
+
+
+            <input type="submit" value="Add" class="btn btn-primary btn-block mb-3">
+          </form>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 {% endblock %}
