@@ -4,6 +4,13 @@ from django.contrib.auth.models import User
 
 
 class Listing(models.Model):
+    TYPE_CHOICES = [
+        ('house', 'House'),
+        ('townhouse', 'Townhouse'),
+        ('apartment', 'Apartment'),
+        ('condo', 'Condo'),
+        ('other', 'Other'),
+    ]
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     address = models.CharField(max_length=200)
@@ -16,7 +23,8 @@ class Listing(models.Model):
     bedrooms = models.IntegerField()
     bathrooms = models.DecimalField(max_digits=2, decimal_places=1)
     sqft = models.IntegerField()
-    deposit = models.IntegerField(default=0)
+    deposit = models.IntegerField(blank=True)
+    type = models.CharField(max_length=10, choices=TYPE_CHOICES, default='house')
     photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
     photo_1 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     photo_2 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)

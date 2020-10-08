@@ -1,10 +1,10 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from django.shortcuts import get_object_or_404
-from django.shortcuts import render, redirect
+from django.db.models import Q
+from django.shortcuts import render, redirect, get_object_or_404
 
-from .choices import price_choices, bedroom_choices, state_choices
+from .choices import beds_min_choices, beds_max_choices, price_min_choices, price_max_choices, states_choices
 from .forms import ListingForm
 from .models import Listing
 
@@ -34,44 +34,50 @@ def listing(request, listing_id):
 
 
 def search(request):
-    queryset_list = Listing.objects.order_by('-list_date')
+    listings = None
+
+    if request.GET:
+        listings = Listing.objects.order_by('-list_date')
 
     # Keywords
     if 'keywords' in request.GET:
         keywords = request.GET['keywords']
         if keywords:
-            queryset_list = queryset_list.filter(description__icontains=keywords)
+            listings = listings.filter(
+                Q(address__icontains=keywords) | Q(city__icontains=keywords) | Q(state__icontains=keywords) | Q(
+                    zipcode__icontains=keywords) | Q(description__icontains=keywords) | Q(address2__icontains=keywords)|Q(title__icontains=keywords))
 
-    # City
-    if 'city' in request.GET:
-        city = request.GET['city']
-        if city:
-            queryset_list = queryset_list.filter(city__iexact=city)
+    # Beds Min
+    if 'beds_min' in request.GET:
+        beds_min = request.GET['beds_min']
+        if beds_min:
+            listings = listings.filter(bedrooms__gte=beds_min)
 
-    # State
-    if 'state' in request.GET:
-        state = request.GET['state']
-        if state:
-            queryset_list = queryset_list.filter(state__iexact=state)
+    # Beds Max
+    if 'beds_max' in request.GET:
+        beds_max = request.GET['beds_max']
+        if beds_max:
+            listings = listings.filter(bedrooms__lte=beds_max)
 
-    # Bedrooms
-    if 'bedrooms' in request.GET:
-        bedrooms = request.GET['bedrooms']
-        if bedrooms:
-            queryset_list = queryset_list.filter(bedrooms__lte=bedrooms)
+    # Beds Min
+    if 'price_min' in request.GET:
+        price_min = request.GET['price_min']
+        if price_min:
+            listings = listings.filter(price__gte=price_min)
 
-    # Price
-    if 'price' in request.GET:
-        price = request.GET['price']
-        if price:
-            queryset_list = queryset_list.filter(price__lte=price)
+    # Beds Max
+    if 'price_max' in request.GET:
+        price_max = request.GET['price_max']
+        if price_max:
+            listings = listings.filter(price__lte=price_max)
 
     context = {
-        'state_choices': state_choices,
-        'bedroom_choices': bedroom_choices,
-        'price_choices': price_choices,
-        'listings': queryset_list,
-        'values': request.GET
+        'beds_min_choices': beds_min_choices,
+        'beds_max_choices': beds_max_choices,
+        'price_min_choices': price_min_choices,
+        'price_max_choices': price_max_choices,
+        'listings': listings,
+        'values': request.GET,
     }
 
     return render(request, 'listings/search.html', context)
@@ -91,6 +97,6 @@ def upload(request):
             messages.error(request, 'Information not valid')
             return redirect('upload')
     context = {
-        'state_choices': state_choices,
+        'state_choices': states_choices,
     }
     return render(request, 'listings/upload.html', context)

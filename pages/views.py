@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from listings.choices import price_choices, bedroom_choices, state_choices
+from listings.choices import beds_max_choices, beds_min_choices, states_choices
 from listings.models import Listing
 
 
@@ -9,9 +9,8 @@ def index(request):
 
     context = {
         'listings': listings,
-        'state_choices': state_choices,
-        'bedroom_choices': bedroom_choices,
-        'price_choices': price_choices
+        'state_choices': states_choices,
+        'bedroom_choices': beds_min_choices,
     }
 
     return render(request,
