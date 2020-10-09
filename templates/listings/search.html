@@ -2,20 +2,39 @@
 
 {% load humanize %}
 
-{% block title %}Search Results | {% endblock %}
+{% block title %}Search | {% endblock %}
 
 {% block content %}
+{% comment %}  <!-- Breadcrumb -->
+  <section id="bc" class="my-3">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="{% url 'index' %}">
+              <i class="fas fa-home"></i> Home</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a href="{% url 'listings' %}">Property Listings</a>
+          </li>
+          <li class="breadcrumb-item active">Search</li>
+        </ol>
+      </nav>
+    </div>
+  </section>{% endcomment %}
+
+  <!-- Alerts -->
+  {% include 'partials/alerts.html' %}
+
+  <!-- Search Bar -->
   <section id="showcase-inner" class="showcase-search text-white py-5">
     <div class="container">
       <div class="row text-center">
         <div class="col-md-12">
-          <h1 class="display-4 mb-4">
-            Search Properties
-          </h1>
+          <h1 class="display-4 mb-5">Property Search</h1>
           <form action="{% url 'search' %}">
-            <!-- Form Row 1 -->
             <div class="form-row">
-              <div class="col-md-8 mx-auto mb-3">
+              <div class="col-md-8 mx-auto mb-4">
                 <div class="input-group">
                   <input type="text" class="form-control" name="keywords"
                          placeholder="Location or Point of Interest" value="{{ values.keywords }}">
@@ -27,91 +46,7 @@
                 </div>
               </div>
             </div>
-            <!-- Form Row 2 -->
-            {#                        <div class="form-row">#}
-            {#                            <div class="col-md-2 mb-3">#}
-            {#                                <label class="sr-only">Bedrooms</label>#}
-            {#                                <select name="bedrooms" class="form-control">#}
-            {#                                    <option selected="true" disabled="disabled">Bedrooms (Any)</option>#}
-            {#                                    {% for key,value in bedroom_choices.items %}#}
-            {#                                        <option value="{{ key }}"#}
-            {#                                                {% if key == values.bedrooms %}#}
-            {#                                                selected#}
-            {#                                                {% endif %}#}
-            {#                                        >{{ value }}</option>#}
-            {#                                    {% endfor %}#}
-            {#                                </select>#}
-            {#                            </div>#}
-            {#                            <div class="col-md-6 mb-3">#}
-            {#                                <select name="price" class="form-control">#}
-            {#                                    <option selected="true" disabled="disabled">Max Price (All)</option>#}
-            {#                                    {% for key,value in price_choices.items %}#}
-            {#                                        <option value="{{ key }}"#}
-            {#                                                {% if key == values.price %}#}
-            {#                                                selected#}
-            {#                                                {% endif %}#}
-            {#                                        >{{ value }}</option>#}
-            {#                                    {% endfor %}#}
-            {#                                </select>#}
-            {#                            </div>#}
-            {#                        </div>#}
-            {#                            <button class="btn btn-primary btn-block mt-4" type="submit">Search</button>#}
           </form>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Breadcrumb -->
-  <section id="bc" class="mt-3">
-    <div class="container">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="{% url 'index' %}">
-              <i class="fas fa-home"></i> Home</a>
-          </li>
-          <li class="breadcrumb-item">
-            <a href="{% url 'listings' %}">Browse Listings</a>
-          </li>
-          <li class="breadcrumb-item active"> Search Results</li>
-        </ol>
-      </nav>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <div class="row text-center">
-        <div class="col-md-12">
-          <div class="form-row">
-            <div class="col-md-2 mb-3">
-              <label class="sr-only">Bedrooms</label>
-              <select name="bedrooms" class="form-control">
-                <option selected="true" disabled="disabled">Beds Min</option>
-                {% for key,value in beds_min_choices.items %}
-                  <option value="{{ key }}"
-                      {% if key == values.bedrooms %}
-                          selected
-                      {% endif %}
-                  >{{ value }}
-                  </option>
-                {% endfor %}
-              </select>
-            </div>
-            <div class="col-md-6 mb-3">
-              <select name="price" class="form-control">
-                <option selected="true" disabled="disabled">Max Price (All)</option>
-                {% for key,value in price_choices.items %}
-                  <option value="{{ key }}"
-                      {% if key == values.price %}
-                          selected
-                      {% endif %}
-                  >{{ value }}</option>
-                {% endfor %}
-              </select>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -123,7 +58,7 @@
       <div class="row">
         {% if listings %}
           {% for listing in listings %}
-            <div class="col-md-6 col-lg-4 mb-4">
+            <div class="col-md-4 mb-4">
               <div class="card listing-preview">
                 <a href="{% url 'listing' listing.id %}">
                   <img class="card-img-top" src="{{ listing.photo_main.url }}" alt="">
@@ -160,7 +95,9 @@
           {% endfor %}
         {% else %}
           <div class="col-md-12">
-            <p>No Listings Available</p>
+            {% if request.GET %}
+              <p>No Listings Available</p>
+            {% endif %}
           </div>
         {% endif %}
       </div>

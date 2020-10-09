@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
   <!-- Custom -->
@@ -22,10 +22,11 @@
 <!-- NavBar -->
 {% include 'partials/navbar.html' %}
 
+<!-- Alert -->
+{% include 'partials/alerts.html' %}
+
 <!-- Main Content -->
-<div class="bg-light">
-  {% block content %}{% endblock %}
-</div>
+{% block content %}{% endblock %}
 
 <!-- Footer -->
 {% include 'partials/footer.html' %}

@@ -10,15 +10,15 @@ from .forms import ListingForm
 from .models import Listing
 
 
-def index(request):
-    listings = Listing.objects.order_by('-list_date').filter(is_published=True)
+def listings(request):
+    listings = Listing.objects.order_by('-list_date').filter(is_published=True)[:3]
 
-    paginator = Paginator(listings, 6)
+    paginator = Paginator(listings, 9)
     page = request.GET.get('page')
     paged_listings = paginator.get_page(page)
 
     context = {
-        'listings': paged_listings
+        'listings': paged_listings,
     }
 
     return render(request, 'listings/listings.html', context)
@@ -38,15 +38,21 @@ def search(request):
     listings = None
 
     if request.GET:
-        listings = Listing.objects.order_by('-list_date')
+        listings = Listing.objects.order_by('-list_date').filter(is_published=True)
 
     # Keywords
     if 'keywords' in request.GET:
         keywords = request.GET['keywords']
         if keywords:
             listings = listings.filter(
-                Q(address__icontains=keywords) | Q(city__icontains=keywords) | Q(state__icontains=keywords) | Q(
-                    zipcode__icontains=keywords) | Q(description__icontains=keywords) | Q(address2__icontains=keywords))
+                Q(address__icontains=keywords) |
+                Q(address2__icontains=keywords) |
+                Q(city__icontains=keywords) |
+                Q(state__icontains=keywords) |
+                Q(zipcode__icontains=keywords) |
+                Q(description__icontains=keywords) |
+                Q(type__icontains=keywords)
+            )
 
     # Beds Min
     if 'beds_min' in request.GET:
@@ -60,13 +66,13 @@ def search(request):
         if beds_max:
             listings = listings.filter(bedrooms__lte=beds_max)
 
-    # Beds Min
+    # Price Min
     if 'price_min' in request.GET:
         price_min = request.GET['price_min']
         if price_min:
             listings = listings.filter(price__gte=price_min)
 
-    # Beds Max
+    # Price Max
     if 'price_max' in request.GET:
         price_max = request.GET['price_max']
         if price_max:
