@@ -2,6 +2,8 @@
 
 {% load humanize %}
 
+{% load thumbnail %}
+
 {% block title %}Search | {% endblock %}
 
 {% block content %}
@@ -60,8 +62,9 @@
           {% for listing in listings %}
             <div class="col-md-4 mb-4">
               <div class="card listing-preview">
+                {% thumbnail listing.photo_main "400x300" crop="100%" as photo %}
                 <a href="{% url 'listing' listing.id %}">
-                  <img class="card-img-top" src="{{ listing.photo_main.url }}" alt="">
+                  <img class="card-img-top" src="{{ photo.url }}" alt="">
                   <div class="card-img-overlay">
                     <h2>
                       <span
@@ -69,6 +72,7 @@
                     </h2>
                   </div>
                 </a>
+                {% endthumbnail %}
                 <div class="card-body">
                   <div class="listing-heading text-center">
                     <p>{{ listing.address }} {{ listing.address2 }}, {{ listing.city }}, {{ listing.state }} {{ listing.zipcode }}</p>
