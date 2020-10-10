@@ -4,8 +4,7 @@ from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 
-from .choices import beds_min_choices, beds_max_choices, price_min_choices, price_max_choices, type_choices, \
-    states_choices
+from .choices import states_choices, type_choices
 from .forms import ListingForm
 from .models import Listing
 
@@ -54,36 +53,7 @@ def search(request):
                 Q(type__icontains=keywords)
             )
 
-    # Beds Min
-    if 'beds_min' in request.GET:
-        beds_min = request.GET['beds_min']
-        if beds_min:
-            listings = listings.filter(bedrooms__gte=beds_min)
-
-    # Beds Max
-    if 'beds_max' in request.GET:
-        beds_max = request.GET['beds_max']
-        if beds_max:
-            listings = listings.filter(bedrooms__lte=beds_max)
-
-    # Price Min
-    if 'price_min' in request.GET:
-        price_min = request.GET['price_min']
-        if price_min:
-            listings = listings.filter(price__gte=price_min)
-
-    # Price Max
-    if 'price_max' in request.GET:
-        price_max = request.GET['price_max']
-        if price_max:
-            listings = listings.filter(price__lte=price_max)
-
     context = {
-        'beds_min_choices': beds_min_choices,
-        'beds_max_choices': beds_max_choices,
-        'price_min_choices': price_min_choices,
-        'price_max_choices': price_max_choices,
-        'type_choices': type_choices,
         'listings': listings,
         'values': request.GET,
     }
@@ -104,7 +74,13 @@ def upload(request):
         else:
             messages.error(request, 'Information not valid')
             return redirect('upload')
+    else:
+        form = ListingForm()
+
     context = {
         'state_choices': states_choices,
+        'type_choices': type_choices,
+        'form': form
     }
+
     return render(request, 'listings/upload.html', context)

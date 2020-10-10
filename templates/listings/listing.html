@@ -8,8 +8,19 @@
 
 {% block content %}
 
+    <!-- Showcase -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-12">
+          <h1 class="display-4">{{ listing.title }}</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Listing -->
-  <section id="listing" class="my-5 py-4">
+  <section id="listing" class="py-4">
     <div class="container">
       <div class="row">
         <div class="col-md-8">
@@ -35,34 +46,34 @@
               </ol>
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  {% thumbnail listing.photo_main "1200x800" crop="100%" as photo %}
+                  {% thumbnail listing.photo_main "1200x900" crop="100%" as photo %}
                     <img src="{{ photo.url }}" class="d-block w-100" alt="">
                   {% endthumbnail %}
                 </div>
                 {% if listing.photo_1 %}
                   <div class="carousel-item">
-                    {% thumbnail listing.photo_1 "1200x800" crop="100%" as photo %}
+                    {% thumbnail listing.photo_1 "1200x900" crop="100%" as photo %}
                       <img src="{{ photo.url }}" class="d-block w-100" alt="">
                     {% endthumbnail %}
                   </div>
                 {% endif %}
                 {% if listing.photo_2 %}
                   <div class="carousel-item">
-                    {% thumbnail listing.photo_2 "1200x800" crop="100%" as photo %}
+                    {% thumbnail listing.photo_2 "1200x900" crop="100%" as photo %}
                       <img src="{{ photo.url }}" class="d-block w-100" alt="">
                     {% endthumbnail %}
                   </div>
                 {% endif %}
                 {% if listing.photo_3 %}
                   <div class="carousel-item">
-                    {% thumbnail listing.photo_3 "1200x800" crop="100%" as photo %}
+                    {% thumbnail listing.photo_3 "1200x900" crop="100%" as photo %}
                       <img src="{{ photo.url }}" class="d-block w-100" alt="">
                     {% endthumbnail %}
                   </div>
                 {% endif %}
                 {% if listing.photo_4 %}
                   <div class="carousel-item">
-                    {% thumbnail listing.photo_4 "1200x800" crop="100%" as photo %}
+                    {% thumbnail listing.photo_4 "1200x900" crop="100%" as photo %}
                       <img src="{{ photo.url }}" class="d-block w-100" alt="">
                     {% endthumbnail %}
                   </div>
@@ -115,131 +126,7 @@
     </div>
   </section>
 
-  <!-- Listing -->
-  <section id="listing" class="py-4">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-9">
-          <!-- Home Main Image -->
-          <img src="{{ listing.photo_main.url }}" alt="" class="img-main img-fluid mb-3">
-          <!-- Thumbnails -->
-          <div class="row mb-5 thumbs">
-            {% if listing.photo_1 %}
-              <div class="col-md-2">
-                <a href="{{ listing.photo_1.url }}" data-lightbox="home-images">
-                  <img src="{{ listing.photo_1.url }}" alt="" class="img-fluid">
-                </a>
-              </div>
-            {% endif %}
-            {% if listing.photo_2 %}
-              <div class="col-md-2">
-                <a href="{{ listing.photo_2.url }}" data-lightbox="home-images">
-                  <img src="{{ listing.photo_2.url }}" alt="" class="img-fluid">
-                </a>
-              </div>
-            {% endif %}
-            {% if listing.photo_3 %}
-              <div class="col-md-2">
-                <a href="{{ listing.photo_3.url }}" data-lightbox="home-images">
-                  <img src="{{ listing.photo_3.url }}" alt="" class="img-fluid">
-                </a>
-              </div>
-            {% endif %}
-            {% if listing.photo_4 %}
-              <div class="col-md-2">
-                <a href="{{ listing.photo_4.url }}" data-lightbox="home-images">
-                  <img src="{{ listing.photo_4.url }}" alt="" class="img-fluid">
-                </a>
-              </div>
-            {% endif %}
-            {% if listing.photo_5 %}
-              <div class="col-md-2">
-                <a href="{{ listing.photo_5.url }}" data-lightbox="home-images">
-                  <img src="{{ listing.photo_5.url }}" alt="" class="img-fluid">
-                </a>
-              </div>
-            {% endif %}
-            {% if listing.photo_6 %}
-              <div class="col-md-2">
-                <a href="{{ listing.photo_6.url }}" data-lightbox="home-images">
-                  <img src="{{ listing.photo_6.url }}" alt="" class="img-fluid">
-                </a>
-              </div>
-            {% endif %}
-          </div>
-          <!-- Fields -->
-          <div class="row mb-5 fields">
-            <div class="col-md-6">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item text-secondary">
-                  <i class="fas fa-money-bill-alt"></i> Asking Price:
-                  <span class="float-right">${{ listing.price | intcomma }}</span>
-                </li>
-                <li class="list-group-item text-secondary">
-                  <i class="fas fa-bed"></i> Bedrooms:
-                  <span class="float-right">{{ listing.bedrooms }}</span>
-                </li>
-                <li class="list-group-item text-secondary">
-                  <i class="fas fa-bath"></i> Bathrooms:
-                  <span class="float-right">{{ listing.bathrooms }}</span>
-                </li>
-                <li class="list-group-item text-secondary">
-                  <i class="fas fa-car"></i> Garage:
-                  <span class="float-right">{{ listing.garage }}
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <div class="col-md-6">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item text-secondary">
-                  <i class="fas fa-th-large"></i> Square Feet:
-                  <span class="float-right">{{ listing.sqft }}</span>
-                </li>
-                <li class="list-group-item text-secondary">
-                  <i class="fas fa-square"></i> Lot Size:
-                  <span class="float-right">{{ listing.lot_size }} Acres
-                  </span>
-                </li>
-                <li class="list-group-item text-secondary">
-                  <i class="fas fa-calendar"></i> Listing Date:
-                  <span class="float-right">{{ listing.list_date }}</span>
-                </li>
-                <li class="list-group-item text-secondary">
-                  <i class="fas fa-bed"></i> Realtor:
-                  <span class="float-right">{{ listing.user }}
-                  </span>
-                </li>
-
-
-              </ul>
-            </div>
-          </div>
-
-          <!-- Description -->
-          <div class="row mb-5">
-            <div class="col-md-12">
-              {{ listing.description }}
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="card mb-3">
-            <img class="card-img-top" src="{{ listing.user.photo.url }}" alt="">
-            <div class="card-body">
-              <h5 class="card-title">Property Realtor</h5>
-              <h6 class="text-secondary">{{ listing.user }}</h6>
-            </div>
-          </div>
-          <button class="btn-primary btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">Make An
-            Inquiry
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Inquiry Modal -->
+  <!-- Contact Modal -->
   <section>
     <div class="modal fade" id="inquiryModal" role="dialog">
       <div class="modal-dialog">
@@ -256,14 +143,11 @@
               {% if user.is_authenticated %}
                 <input type="hidden" name="user_id" value="{{ user.id }}">
               {% else %}
-                <input type="hidden" name="user_id" value="None">
+                <input type="hidden" name="user_id" value="0">
               {% endif %}
               <input type="hidden" name="realtor_email" value="{{ listing.user.email }}">
               <input type="hidden" name="listing_id" value="{{ listing.id }}">
-              {% comment %}<div class="form-group">
-                <label for="property_name" class="col-form-label">Property:</label>
-                <input type="text" name="listing" class="form-control" value="{{ listing.address }}" disabled>
-              </div>{% endcomment %}
+              <input type="hidden" name="listing" value="{{ listing.title }}">
               <div class="form-group">
                 <label for="name" class="col-form-label">Name:</label>
                 <input type="text" name="name" class="form-control" {% if user.is_authenticated %}
@@ -280,10 +164,10 @@
               </div>
               <div class="form-group">
                 <label for="message" class="col-form-label">Message:</label>
-                <textarea name="message" class="form-control"></textarea>
+                <textarea name="message" class="form-control" rows="5"></textarea>
               </div>
               <hr>
-              <input type="submit" value="Send" class="btn btn-block btn-secondary">
+              <input type="submit" value="Send Message" class="btn btn-block btn-primary">
             </form>
           </div>
         </div>

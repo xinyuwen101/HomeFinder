@@ -56,7 +56,7 @@
               {% endif %}
           >
             <a class="nav-link" href="{% url 'dashboard' %}">
-              Welcome, {{ user.first_name }}</a>
+              Welcome {{ user.first_name }}</a>
           </li>
           <li class="nav-item mr-3">
             <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">

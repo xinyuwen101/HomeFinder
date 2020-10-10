@@ -7,26 +7,6 @@
 {% block title %}Search | {% endblock %}
 
 {% block content %}
-{% comment %}  <!-- Breadcrumb -->
-  <section id="bc" class="my-3">
-    <div class="container">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="{% url 'index' %}">
-              <i class="fas fa-home"></i> Home</a>
-          </li>
-          <li class="breadcrumb-item">
-            <a href="{% url 'listings' %}">Property Listings</a>
-          </li>
-          <li class="breadcrumb-item active">Search</li>
-        </ol>
-      </nav>
-    </div>
-  </section>{% endcomment %}
-
-  <!-- Alerts -->
-  {% include 'partials/alerts.html' %}
 
   <!-- Search Bar -->
   <section id="showcase-inner" class="showcase-search text-white py-5">
@@ -63,15 +43,15 @@
             <div class="col-md-4 mb-4">
               <div class="card listing-preview">
                 {% thumbnail listing.photo_main "400x300" crop="100%" as photo %}
-                <a href="{% url 'listing' listing.id %}">
-                  <img class="card-img-top" src="{{ photo.url }}" alt="">
-                  <div class="card-img-overlay">
-                    <h2>
+                  <a href="{% url 'listing' listing.id %}">
+                    <img class="card-img-top" src="{{ photo.url }}" alt="">
+                    <div class="card-img-overlay">
+                      <h2>
                       <span
-                          class="badge badge-success text-white">${{ listing.price | intcomma }}<small>/mo</small></span>
-                    </h2>
-                  </div>
-                </a>
+                          class="badge badge-primary text-white">${{ listing.price | intcomma }}<small>/mo</small></span>
+                      </h2>
+                    </div>
+                  </a>
                 {% endthumbnail %}
                 <div class="card-body">
                   <div class="listing-heading text-center">

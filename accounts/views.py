@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
 from contacts.models import Contact
+from listings.models import Listing
 
 
 def register(request):
@@ -66,7 +67,12 @@ def logout(request):
 
 @login_required
 def dashboard(request):
-    user_contacts = Contact.objects.order_by('-contact_date').filter(user_id=request.user.id)
+    listings = Listing.objects.filter(user=request.user)
+    contacts = Contact.objects.all()
 
-    context = {'contacts': user_contacts}
+    context = {
+        'contacts': contacts,
+        'listings': listings
+    }
+
     return render(request, 'accounts/dashboard.html', context)

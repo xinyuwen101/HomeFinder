@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 
-from django.contrib.messages import constants
+# from django.contrib.messages import constants
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -127,12 +127,12 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-# Messages
-MESSAGE_TAGS = {
-    constants.ERROR: 'danger'
-}
-
-try:
-    from .local_settings import *
-except ImportError:
-    pass
+# # Messages
+# MESSAGE_TAGS = {
+#     constants.ERROR: 'danger'
+# }
+#
+# try:
+#     from .local_settings import *
+# except ImportError:
+#     pass

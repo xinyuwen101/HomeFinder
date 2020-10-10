@@ -1,16 +1,16 @@
 .btn-outline-primary:hover {
     color: #007bff;
-    background-color: rgba(0,132,255,.06);
+    background-color: rgba(0, 132, 255, .06);
 }
 
 .btn-outline-success:hover {
     color: #28a745;
-    background-color: rgba(0,132,255,.06);
+    background-color: rgba(0, 132, 255, .06);
 }
 
 .btn-outline-danger:hover {
     color: #dc3545;
-    background-color: rgba(0,132,255,.06);
+    background-color: rgba(0, 132, 255, .06);
 }
 
 .btn-secondary {
