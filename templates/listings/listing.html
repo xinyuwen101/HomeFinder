@@ -46,34 +46,34 @@
               </ol>
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  {% thumbnail listing.photo_main "1200x900" crop="100%" as photo %}
+                  {% thumbnail listing.photo_main "1200x800" crop="100%" as photo %}
                     <img src="{{ photo.url }}" class="d-block w-100" alt="">
                   {% endthumbnail %}
                 </div>
                 {% if listing.photo_1 %}
                   <div class="carousel-item">
-                    {% thumbnail listing.photo_1 "1200x900" crop="100%" as photo %}
+                    {% thumbnail listing.photo_1 "1200x800" crop="100%" as photo %}
                       <img src="{{ photo.url }}" class="d-block w-100" alt="">
                     {% endthumbnail %}
                   </div>
                 {% endif %}
                 {% if listing.photo_2 %}
                   <div class="carousel-item">
-                    {% thumbnail listing.photo_2 "1200x900" crop="100%" as photo %}
+                    {% thumbnail listing.photo_2 "1200x800" crop="100%" as photo %}
                       <img src="{{ photo.url }}" class="d-block w-100" alt="">
                     {% endthumbnail %}
                   </div>
                 {% endif %}
                 {% if listing.photo_3 %}
                   <div class="carousel-item">
-                    {% thumbnail listing.photo_3 "1200x900" crop="100%" as photo %}
+                    {% thumbnail listing.photo_3 "1200x800" crop="100%" as photo %}
                       <img src="{{ photo.url }}" class="d-block w-100" alt="">
                     {% endthumbnail %}
                   </div>
                 {% endif %}
                 {% if listing.photo_4 %}
                   <div class="carousel-item">
-                    {% thumbnail listing.photo_4 "1200x900" crop="100%" as photo %}
+                    {% thumbnail listing.photo_4 "1200x800" crop="100%" as photo %}
                       <img src="{{ photo.url }}" class="d-block w-100" alt="">
                     {% endthumbnail %}
                   </div>
@@ -110,7 +110,7 @@
             </div>
             <hr>
             <div class="row mt-3">
-              <div>{{ listing.description }}</div>
+              <div>{{ listing.description | linebreaks}}</div>
             </div>
             <hr>
             <div class="row mt-4">
@@ -143,7 +143,7 @@
               {% if user.is_authenticated %}
                 <input type="hidden" name="user_id" value="{{ user.id }}">
               {% else %}
-                <input type="hidden" name="user_id" value="0">
+                <input type="hidden" name="user_id">
               {% endif %}
               <input type="hidden" name="realtor_email" value="{{ listing.user.email }}">
               <input type="hidden" name="listing_id" value="{{ listing.id }}">

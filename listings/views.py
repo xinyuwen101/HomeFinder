@@ -10,7 +10,7 @@ from .models import Listing
 
 
 def listings(request):
-    listings = Listing.objects.order_by('-list_date').filter(is_published=True)[:3]
+    listings = Listing.objects.filter(is_published=True)
 
     paginator = Paginator(listings, 9)
     page = request.GET.get('page')

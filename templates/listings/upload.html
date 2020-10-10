@@ -28,11 +28,11 @@
                 </div>
                 <div class="form-group">
                   <div class="row">
-                    <div class="col-7">
+                    <div class="col-8">
                       <label for="city">City</label>
                       <input type="text" name="city" class="form-control" id="city" required>
                     </div>
-                    <div class="col-5">
+                    <div class="col-4">
                       <label for="state">State</label>
                       <select name="state" class="form-control" id="state" required>
                         <option selected="true" disabled="disabled">Select</option>
@@ -41,7 +41,7 @@
                               {% if key == values.state %}
                                   selected
                               {% endif %}
-                          >{{ value }}</option>
+                          >{{ key }}</option>
                         {% endfor %}
                       </select>
                     </div>
@@ -56,16 +56,16 @@
                   <input type="number" name="price" class="form-control" id="price" required>
                 </div>
                 <div class="form-group">
-                  <label for="sqft">SqFt</label>
-                  <input type="number" name="sqft" class="form-control" id="sqft" required>
-                </div>
-                <div class="form-group">
                   <label for="bedrooms">Bedrooms</label>
                   <input type="number" name="bedrooms" class="form-control" id="bedrooms" required>
                 </div>
                 <div class="form-group">
                   <label for="bathrooms">Bathrooms</label>
                   <input type="number" name="bathrooms" class="form-control" id="bathrooms" required>
+                </div>
+                <div class="form-group">
+                  <label for="sqft">Area</label>
+                  <input type="number" name="sqft" class="form-control" id="sqft" required>
                 </div>
                 <div class="form-group">
                   <label for="type">Type</label>
