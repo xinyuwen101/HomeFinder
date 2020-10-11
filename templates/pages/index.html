@@ -57,16 +57,9 @@
                 {% endthumbnail %}
                 <div class="card-body">
                   <div class="listing-heading text-center">
-                    <p>{{ listing.city }}, {{ listing.state }} {{ listing.zipcode }}</p>
+                    <p><i class="fa fa-map-marker-alt"></i> {{ listing.city }}, {{ listing.state }} {{ listing.zipcode }}</p>
                   </div>
                   <hr>
-                  <div class="row py-2">
-                    <div class="col-6">
-                      <i class="fa fa-th-large"></i> {{ listing.sqft }} Sq Ft
-                    </div>
-                    <div class="col-6">
-                      <i class="fa fa-home"></i> {{ listing.type|capfirst }}</div>
-                  </div>
                   <div class="row py-2">
                     <div class="col-6">
                       <i class="fa fa-bed"></i> {{ listing.bedrooms }} bd
@@ -74,6 +67,13 @@
                     <div class="col-6">
                       <i class="fa fa-bath"></i> {{ listing.bathrooms|floatformat }} ba
                     </div>
+                  </div>
+                  <div class="row py-2">
+                    <div class="col-6">
+                      <i class="fa fa-th-large"></i> {{ listing.sqft }} Sq Ft
+                    </div>
+                    <div class="col-6">
+                      <i class="fa fa-home"></i> {{ listing.type|capfirst }}</div>
                   </div>
                 </div>
               </div>

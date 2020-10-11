@@ -27,20 +27,22 @@
         <div class="col-md-7">
           <div class="container">
             <div class="row">
-              {% if listing.photo_main %}
-                {% thumbnail listing.photo_main "1200x900" crop="100%" as photo %}
-                  <a href="{{ photo.url }}" data-toggle="lightbox" data-gallery="gallery">
-                    <img src="{{ photo.url }}" class="img-fluid">
-                  </a>
-                {% endthumbnail %}
-              {% endif %}
+              <div class="px-1">
+                {% if listing.photo_main %}
+                  {% thumbnail listing.photo_main "1200x900" crop="100%" as photo %}
+                    <a href="{{ photo.url }}" data-toggle="lightbox" data-gallery="gallery">
+                      <img src="{{ photo.url }}">
+                    </a>
+                  {% endthumbnail %}
+                {% endif %}
+              </div>
             </div>
             <div class="row mt-1">
               <div class="col-3 px-1">
                 {% if listing.photo_1 %}
                   {% thumbnail listing.photo_1 "1200x900" crop="100%" as photo %}
-                    <a href="{{ listing.photo_1.url }}" data-toggle="lightbox" data-gallery="gallery">
-                      <img src="{{ photo.url }}" class="img-fluid">
+                    <a href="{{ photo.url }}" data-toggle="lightbox" data-gallery="gallery">
+                      <img src="{{ photo.url }}">
                     </a>
                   {% endthumbnail %}
                 {% endif %}
@@ -48,8 +50,8 @@
               <div class="col-3 px-1">
                 {% if listing.photo_2 %}
                   {% thumbnail listing.photo_2 "1200x900" crop="100%" as photo %}
-                    <a href="{{ listing.photo_2.url }}" data-toggle="lightbox" data-gallery="gallery">
-                      <img src="{{ photo.url }}" class="img-fluid">
+                    <a href="{{ photo.url }}" data-toggle="lightbox" data-gallery="gallery">
+                      <img src="{{ photo.url }}">
                     </a>
                   {% endthumbnail %}
                 {% endif %}
@@ -57,8 +59,8 @@
               <div class="col-3 px-1">
                 {% if listing.photo_3 %}
                   {% thumbnail listing.photo_3 "1200x900" crop="100%" as photo %}
-                    <a href="{{ listing.photo_3.url }}" data-toggle="lightbox" data-gallery="gallery">
-                      <img src="{{ photo.url }}" class="img-fluid">
+                    <a href="{{ photo.url }}" data-toggle="lightbox" data-gallery="gallery">
+                      <img src="{{ photo.url }}">
                     </a>
                   {% endthumbnail %}
                 {% endif %}
@@ -66,8 +68,8 @@
               <div class="col-3 px-1">
                 {% if listing.photo_4 %}
                   {% thumbnail listing.photo_4 "1200x900" crop="100%" as photo %}
-                    <a href="{{ listing.photo_4.url }}" data-toggle="lightbox" data-gallery="gallery">
-                      <img src="{{ photo.url }}" class="img-fluid">
+                    <a href="{{ photo.url }}" data-toggle="lightbox" data-gallery="gallery">
+                      <img src="{{ photo.url }}">
                     </a>
                   {% endthumbnail %}
                 {% endif %}
@@ -123,7 +125,7 @@
               {% if user.is_authenticated %}
                 <input type="hidden" name="user_id" value="{{ user.id }}">
               {% else %}
-                <input type="hidden" name="user_id">
+                <input type="hidden" name="user_id" value="-1">
               {% endif %}
               <input type="hidden" name="realtor_email" value="{{ listing.user.email }}">
               <input type="hidden" name="listing_id" value="{{ listing.id }}">

@@ -88,10 +88,10 @@
             <thead>
             <tr>
               <th style="width: 5%;">#</th>
-              <th style="width: 20%;">Title</th>
-              <th style="width: 60%">Address</th>
-              <th style="width: 10%">Price</th>
-              <th style="width: 5%">Link</th>
+              <th style="width: 25%;">Title</th>
+              <th style="width: 15%">Price</th>
+              <th style="width: 45%">Address</th>
+              <th style="width: 10%">Published</th>
             </tr>
             </thead>
             <tbody>
@@ -99,9 +99,15 @@
               <tr>
                 <td>{{ forloop.counter }}</td>
                 <td><a href="{% url 'listing' listing.id %}">{{ listing.title }}</a></td>
-                <td>{{ listing.address }} {{ listing.address2 }}, {{ listing.city }}, {{ listing.state }} {{ listing.zipcode }}</td>
                 <td>${{ listing.price | intcomma }}</td>
-                <td><a href="{% url 'listing' listing.id %}" class="btn btn-outline-primary btn-block">Go</a></td>
+                <td>{{ listing.address }} {{ listing.address2 }}, {{ listing.city }}, {{ listing.state }} {{ listing.zipcode }}</td>
+                <td>
+                  <div class="text-center">
+                    {% if listing.is_published %}
+                      <i class="fa fa-check"></i>
+                    {% endif %}
+                  </div>
+                </td>
               </tr>
             {% endfor %}
             </tbody>

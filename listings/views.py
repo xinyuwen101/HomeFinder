@@ -12,7 +12,7 @@ from .models import Listing
 def listings(request):
     listings = Listing.objects.filter(is_published=True)
 
-    paginator = Paginator(listings, 9)
+    paginator = Paginator(listings, 6)
     page = request.GET.get('page')
     paged_listings = paginator.get_page(page)
 
@@ -37,21 +37,26 @@ def search(request):
     listings = None
 
     if request.GET:
-        listings = Listing.objects.order_by('-list_date').filter(is_published=True)
+        listings = Listing.objects.filter(is_published=True)
 
-    # Keywords
-    if 'keywords' in request.GET:
-        keywords = request.GET['keywords']
-        if keywords:
-            listings = listings.filter(
-                Q(address__icontains=keywords) |
-                Q(address2__icontains=keywords) |
-                Q(city__icontains=keywords) |
-                Q(state__icontains=keywords) |
-                Q(zipcode__icontains=keywords) |
-                Q(description__icontains=keywords) |
-                Q(type__icontains=keywords)
-            )
+        # Keywords
+        if 'keywords' in request.GET:
+            keywords = request.GET['keywords']
+            if keywords:
+                listings = listings.filter(
+                    Q(address__icontains=keywords) |
+                    Q(address2__icontains=keywords) |
+                    Q(city__icontains=keywords) |
+                    Q(state__icontains=keywords) |
+                    Q(zipcode__icontains=keywords) |
+                    Q(description__icontains=keywords) |
+                    Q(type__icontains=keywords)
+                )
+
+        paginator = Paginator(listings, 6)
+        page = request.GET.get('page')
+        paged_listings = paginator.get_page(page)
+        listings = paged_listings
 
     context = {
         'listings': listings,
