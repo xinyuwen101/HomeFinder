@@ -6,3 +6,8 @@ $(".custom-file-input").on("change", function () {
 //
 // const date = new Date();
 // document.querySelector('.year').innerHTML = date.getFullYear();
+
+$(document).on("click", '[data-toggle="lightbox"]', function (event) {
+    event.preventDefault();
+    $(this).ekkoLightbox();
+});

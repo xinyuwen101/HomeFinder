@@ -13,6 +13,4 @@ def index(request):
         'bedroom_choices': beds_min_choices,
     }
 
-    return render(request,
-                  'pages/index.html',
-                  context)
+    return render(request, 'pages/index.html', context)

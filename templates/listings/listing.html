@@ -8,7 +8,7 @@
 
 {% block content %}
 
-    <!-- Showcase -->
+  <!-- Showcase -->
   <section class="py-5">
     <div class="container">
       <div class="row text-center">
@@ -23,97 +23,77 @@
   <section id="listing" class="py-4">
     <div class="container">
       <div class="row">
-        <div class="col-md-8">
+        <!-- Images -->
+        <div class="col-md-7">
           <div class="container">
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="false">
-              <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <div class="row">
+              {% if listing.photo_main %}
+                {% thumbnail listing.photo_main "1200x900" crop="100%" as photo %}
+                  <a href="{{ photo.url }}" data-toggle="lightbox" data-gallery="gallery">
+                    <img src="{{ photo.url }}" class="img-fluid">
+                  </a>
+                {% endthumbnail %}
+              {% endif %}
+            </div>
+            <div class="row mt-1">
+              <div class="col-3 px-1">
                 {% if listing.photo_1 %}
-                  <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                {% endif %}
-                {% if listing.photo_2 %}
-                  <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                {% endif %}
-                {% if listing.photo_3 %}
-                  <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-                {% endif %}
-                {% if listing.photo_4 %}
-                  <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-                {% endif %}
-                {% if listing.photo_5 %}
-                  <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
-                {% endif %}
-              </ol>
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  {% thumbnail listing.photo_main "1200x800" crop="100%" as photo %}
-                    <img src="{{ photo.url }}" class="d-block w-100" alt="">
+                  {% thumbnail listing.photo_1 "1200x900" crop="100%" as photo %}
+                    <a href="{{ listing.photo_1.url }}" data-toggle="lightbox" data-gallery="gallery">
+                      <img src="{{ photo.url }}" class="img-fluid">
+                    </a>
                   {% endthumbnail %}
-                </div>
-                {% if listing.photo_1 %}
-                  <div class="carousel-item">
-                    {% thumbnail listing.photo_1 "1200x800" crop="100%" as photo %}
-                      <img src="{{ photo.url }}" class="d-block w-100" alt="">
-                    {% endthumbnail %}
-                  </div>
-                {% endif %}
-                {% if listing.photo_2 %}
-                  <div class="carousel-item">
-                    {% thumbnail listing.photo_2 "1200x800" crop="100%" as photo %}
-                      <img src="{{ photo.url }}" class="d-block w-100" alt="">
-                    {% endthumbnail %}
-                  </div>
-                {% endif %}
-                {% if listing.photo_3 %}
-                  <div class="carousel-item">
-                    {% thumbnail listing.photo_3 "1200x800" crop="100%" as photo %}
-                      <img src="{{ photo.url }}" class="d-block w-100" alt="">
-                    {% endthumbnail %}
-                  </div>
-                {% endif %}
-                {% if listing.photo_4 %}
-                  <div class="carousel-item">
-                    {% thumbnail listing.photo_4 "1200x800" crop="100%" as photo %}
-                      <img src="{{ photo.url }}" class="d-block w-100" alt="">
-                    {% endthumbnail %}
-                  </div>
-                {% endif %}
-                {% if listing.photo_5 %}
-                  <div class="carousel-item">
-                    {% thumbnail listing.photo_5 "1200x800" crop="100%" as photo %}
-                      <img src="{{ photo.url }}" class="d-block w-100" alt="">
-                    {% endthumbnail %}
-                  </div>
                 {% endif %}
               </div>
-              <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
+              <div class="col-3 px-1">
+                {% if listing.photo_2 %}
+                  {% thumbnail listing.photo_2 "1200x900" crop="100%" as photo %}
+                    <a href="{{ listing.photo_2.url }}" data-toggle="lightbox" data-gallery="gallery">
+                      <img src="{{ photo.url }}" class="img-fluid">
+                    </a>
+                  {% endthumbnail %}
+                {% endif %}
+              </div>
+              <div class="col-3 px-1">
+                {% if listing.photo_3 %}
+                  {% thumbnail listing.photo_3 "1200x900" crop="100%" as photo %}
+                    <a href="{{ listing.photo_3.url }}" data-toggle="lightbox" data-gallery="gallery">
+                      <img src="{{ photo.url }}" class="img-fluid">
+                    </a>
+                  {% endthumbnail %}
+                {% endif %}
+              </div>
+              <div class="col-3 px-1">
+                {% if listing.photo_4 %}
+                  {% thumbnail listing.photo_4 "1200x900" crop="100%" as photo %}
+                    <a href="{{ listing.photo_4.url }}" data-toggle="lightbox" data-gallery="gallery">
+                      <img src="{{ photo.url }}" class="img-fluid">
+                    </a>
+                  {% endthumbnail %}
+                {% endif %}
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
+
+        <!-- Text -->
+        <div class="col-md-5">
           <div class="container">
             <div class="row">
               <span><span class="h3">${{ listing.price | intcomma }}</span>/mo</span>
             </div>
-            <div class="row mt-2">
+            <div class="row mt-3">
               <span>{{ listing.bedrooms }} bd | {{ listing.bathrooms | floatformat }} ba | {{ listing.sqft }} Square Feet</span>
             </div>
             <div class="row mt-2">
               <span>{{ listing.address }} {{ listing.address2 }}, {{ listing.city }}, {{ listing.state }} {{ listing.zipcode }}</span>
             </div>
-            <hr>
+            <hr class="mt-3">
             <div class="row mt-3">
-              <div>{{ listing.description | linebreaks}}</div>
+              <div>{{ listing.description | linebreaks }}</div>
             </div>
-            <hr>
-            <div class="row mt-4">
+            <hr class="mt-3">
+            <div class="row mt-5">
               <div class="col-9 mx-auto">
                 <button class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#inquiryModal">
                   Contact Property
