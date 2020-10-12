@@ -44,12 +44,12 @@
               class="nav-item mr-3"
             {% endif %}
         >
-          <a class="nav-link" href="{% url 'upload' %}">{% translate 'Add a Property' %}</a>
+          <a class="nav-link" href="{% url 'upload' %}">{% translate 'Add a Listing' %}</a>
         </li>
       </ul>
 
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown mr-3">
           <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown"
              aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-globe"></i> {% trans "切换语言" %}
@@ -111,7 +111,7 @@
                 class="nav-item mr-3"
               {% endif %}
           >
-            <a class="nav-link" href="{% url 'login' %}?next={{ request.path|urlencode }}">
+            <a class="nav-link" href="{% url 'login' %}?next={{ request.path | urlencode }}">
               <i class="fas fa-sign-in-alt"></i> {% translate 'Login' %}</a>
           </li>
         {% endif %}
