@@ -1,4 +1,6 @@
 {% load static %}
+{% load i18n %}
+
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
   <div class="container">
@@ -15,7 +17,7 @@
               class="nav-item mx-3"
             {% endif %}
         >
-          <a class="nav-link" href="{% url 'index' %}">Home</a>
+          <a class="nav-link" href="{% url 'index' %}">{% translate 'Home' %}</a>
         </li>
         <li
             {% if 'search' in request.path %}
@@ -24,7 +26,7 @@
               class="nav-item mr-3"
             {% endif %}
         >
-          <a class="nav-link" href="{% url 'search' %}">Search</a>
+          <a class="nav-link" href="{% url 'search' %}">{% translate 'Search' %}</a>
         </li>
         <li
             {% if 'listings' in request.path and 'search' not in request.path and 'upload' not in request.path %}
@@ -33,7 +35,7 @@
               class="nav-item mr-3"
             {% endif %}
         >
-          <a class="nav-link" href="{% url 'listings' %}">Listings</a>
+          <a class="nav-link" href="{% url 'listings' %}">{% translate 'Listings' %}</a>
         </li>
         <li
             {% if 'upload' in request.path %}
@@ -42,11 +44,35 @@
               class="nav-item mr-3"
             {% endif %}
         >
-          <a class="nav-link" href="{% url 'upload' %}">Add a Property</a>
+          <a class="nav-link" href="{% url 'upload' %}">{% translate 'Add a Property' %}</a>
         </li>
       </ul>
 
       <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-globe"></i> {% trans "切换语言" %}
+          </a>
+          <form action="{% url 'set_language' %}" method="post" id="lang_form">
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ redirect_to }}">
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {% get_current_language as LANGUAGE_CODE %}
+              {% get_available_languages as LANGUAGES %}
+              {% get_language_info_list for LANGUAGES as languages %}
+              {% for language in languages %}
+                <li>
+                  <button type="submit" name="language" value="{{ language.code }}"
+                          class="{% if language.code == LANGUAGE_CODE %}selected{% else %}demo-text-black{% endif %} dropdown-item">
+                    {{ language.name_local }}
+                  </button>
+                </li>
+              {% endfor %}
+            </ul>
+          </form>
+        </li>
+
         {% if user.is_authenticated %}
           <li
               {% if 'dashboard' in request.path %}
@@ -56,11 +82,11 @@
               {% endif %}
           >
             <a class="nav-link" href="{% url 'dashboard' %}">
-              Welcome {{ user.first_name }}</a>
+              {% translate 'Welcome' %}, {{ user.first_name }}</a>
           </li>
           <li class="nav-item mr-3">
             <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">
-              <i class="fas fa-sign-out-alt"></i> Logout
+              <i class="fas fa-sign-out-alt"></i> {% translate 'Logout' %}
             </a>
             <form action="{% url 'logout' %}" method="POST" id="logout">
               {% csrf_token %}
@@ -76,7 +102,7 @@
               {% endif %}
           >
             <a class="nav-link" href="{% url 'register' %}">
-              <i class="fas fa-user-plus"></i> Register</a>
+              <i class="fas fa-user-plus"></i> {% translate 'Register' %}</a>
           </li>
           <li
               {% if 'login' in request.path %}
@@ -86,8 +112,7 @@
               {% endif %}
           >
             <a class="nav-link" href="{% url 'login' %}?next={{ request.path|urlencode }}">
-              <i class="fas fa-sign-in-alt"></i>
-              Login</a>
+              <i class="fas fa-sign-in-alt"></i> {% translate 'Login' %}</a>
           </li>
         {% endif %}
       </ul>

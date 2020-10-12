@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
+
 {% load humanize %}
 
 {% load thumbnail %}
@@ -82,13 +84,14 @@
         <div class="col-md-5">
           <div class="container">
             <div class="row">
-              <span><span class="h3">${{ listing.price | intcomma }}</span>/mo</span>
+              <span><span class="h3">${{ listing.price | intcomma }}</span>/{% translate 'mo' %}</span>
             </div>
             <div class="row mt-3">
-              <span>{{ listing.bedrooms }} bd | {{ listing.bathrooms | floatformat }} ba | {{ listing.sqft }} Square Feet</span>
+              <span>{{ listing.bedrooms }} {% translate 'bd' %} | {{ listing.bathrooms | floatformat }} {% translate 'ba' %} | {{ listing.sqft }} {% translate 'Square Feet' %}</span>
             </div>
             <div class="row mt-2">
-              <span><i class="fa fa-map-marker-alt"></i> {{ listing.address }} {{ listing.address2 }}, {{ listing.city }}, {{ listing.state }} {{ listing.zipcode }}</span>
+              <span><i
+                  class="fa fa-map-marker-alt"></i> {{ listing.address }} {{ listing.address2 }}, {{ listing.city }}, {{ listing.state }} {{ listing.zipcode }}</span>
             </div>
             <hr class="mt-4">
             <div class="row mt-4">
@@ -97,9 +100,8 @@
             <hr class="mt-3">
             <div class="row mt-5">
               <div class="col-9 mx-auto">
-                <button class="btn btn-outline-primary btn-block" data-toggle="modal" data-target="#inquiryModal">
-                  Contact Property
-                </button>
+                <button class="btn btn-outline-primary btn-block" data-toggle="modal"
+                        data-target="#inquiryModal">{% translate 'Contact Property' %}</button>
               </div>
             </div>
           </div>
@@ -114,7 +116,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="inquiryModalLabel">Contact Property</h5>
+            <h5 class="modal-title" id="inquiryModalLabel">{% translate 'Contact Property' %}</h5>
             <button type="button" class="close" data-dismiss="modal">
               <span>&times;</span>
             </button>
@@ -131,25 +133,25 @@
               <input type="hidden" name="listing_id" value="{{ listing.id }}">
               <input type="hidden" name="listing" value="{{ listing.title }}">
               <div class="form-group">
-                <label for="name" class="col-form-label">Name:</label>
+                <label for="name" class="col-form-label">{% translate 'Name' %}</label>
                 <input type="text" name="name" class="form-control" {% if user.is_authenticated %}
                        value="{{ user.first_name }} {{ user.last_name }}" {% endif %} required>
               </div>
               <div class="form-group">
-                <label for="email" class="col-form-label">Email:</label>
+                <label for="email" class="col-form-label">{% translate 'Email' %}</label>
                 <input type="email" name="email" class="form-control" {% if user.is_authenticated %}
                        value="{{ user.email }}" {% endif %} required>
               </div>
               <div class="form-group">
-                <label for="phone" class="col-form-label">Phone:</label>
+                <label for="phone" class="col-form-label">{% translate 'Phone' %}</label>
                 <input type="text" name="phone" class="form-control">
               </div>
               <div class="form-group">
-                <label for="message" class="col-form-label">Message:</label>
+                <label for="message" class="col-form-label">{% translate 'Message' %}</label>
                 <textarea name="message" class="form-control" rows="5"></textarea>
               </div>
               <hr>
-              <input type="submit" value="Send Message" class="btn btn-block btn-primary">
+              <input type="submit" value="{% translate 'Send Message' %}" class="btn btn-block btn-primary">
             </form>
           </div>
         </div>

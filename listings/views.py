@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
+from django.utils.translation import gettext as _
 
 from .choices import states_choices, type_choices
 from .forms import ListingForm
@@ -74,10 +75,10 @@ def upload(request):
             new_listing = form.save(commit=False)
             new_listing.user = request.user
             new_listing.save()
-            messages.success(request, 'Uploaded successfully')
+            messages.success(request, _('Uploaded successfully'))
             return redirect('listings')
         else:
-            messages.error(request, 'Information not valid')
+            messages.error(request, _('Information not valid'))
             return redirect('upload')
     else:
         form = ListingForm()

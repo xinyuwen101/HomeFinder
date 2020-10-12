@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
-{% block title %}Dashboard | {% endblock %}
+{% load i18n %}
+
+{% block title %}{% translate 'Dashboard' %} | {% endblock %}
 
 {% load humanize %}
 
@@ -13,7 +15,7 @@
     <div class="container">
       <div class="row text-center">
         <div class="col-md-12">
-          <h1 class="display-4">Dashboard</h1>
+          <h1 class="display-4">{% translate 'Dashboard' %}</h1>
         </div>
       </div>
     </div>
@@ -22,18 +24,18 @@
   <!-- Messages -->
   <section class="py-4">
     <div class="container">
-      <h4 class="mb-4">Your Messages</h4>
+      <h4 class="mb-4">{% translate 'Your Messages' %}</h4>
       <div class="row">
         {% if contacts %}
           <table class="table table-bordered table-striped">
             <thead>
             <tr>
               <th style="width: 5%;">#</th>
-              <th style="width: 25%;">Property</th>
-              <th style="width: 20%;">Name</th>
-              <th style="width: 15%;">Phone</th>
-              <th style="width: 25%;">Email</th>
-              <th style="width: 10%;">Message</th>
+              <th style="width: 25%;">{% translate 'Property' %}</th>
+              <th style="width: 20%;">{% translate 'Name' %}</th>
+              <th style="width: 15%;">{% translate 'Phone' %}</th>
+              <th style="width: 25%;">{% translate 'Email' %}</th>
+              <th style="width: 10%;">{% translate 'Message' %}</th>
             </tr>
             </thead>
             <tbody>
@@ -46,7 +48,7 @@
                 <td><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></td>
                 <td>
                   <button data-toggle="modal" data-target="#message-modal" class="btn btn-outline-primary btn-block">
-                    View
+                    {% translate 'View' %}
                   </button>
                   <!-- Contact Modal -->
                   <section>
@@ -54,7 +56,7 @@
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="inquiryModalLabel">Message</h5>
+                            <h5 class="modal-title" id="inquiryModalLabel">{% translate 'Message' %}</h5>
                             <button type="button" class="close" data-dismiss="modal">
                               <span>&times;</span>
                             </button>
@@ -72,7 +74,7 @@
             </tbody>
           </table>
         {% else %}
-          <p>You have no messages.</p>
+          <p>{% translate 'You have no messages.' %}</p>
         {% endif %}
       </div>
     </div>
@@ -81,17 +83,17 @@
   <!-- Listings -->
   <section class="py-4">
     <div class="container">
-      <h4 class="mb-4">Your Properties</h4>
+      <h4 class="mb-4">{% translate 'Your Properties' %}</h4>
       <div class="row">
         {% if listings %}
           <table class="table table-bordered table-striped">
             <thead>
             <tr>
               <th style="width: 5%;">#</th>
-              <th style="width: 25%;">Property</th>
-              <th style="width: 15%">Price</th>
-              <th style="width: 45%">Address</th>
-              <th style="width: 10%">Published</th>
+              <th style="width: 25%;">{% translate 'Property' %}</th>
+              <th style="width: 15%">{% translate 'Price' %}</th>
+              <th style="width: 45%">{% translate 'Address' %}</th>
+              <th style="width: 10%">{% translate 'Published' %}</th>
             </tr>
             </thead>
             <tbody>
@@ -113,7 +115,7 @@
             </tbody>
           </table>
         {% else %}
-          <p>You have no listings.</p>
+          <p>{% translate 'You have no listings.' %}</p>
         {% endif %}
       </div>
     </div>

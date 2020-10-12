@@ -2,6 +2,7 @@ from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, HttpResponseRedirect
+from django.utils.translation import gettext as _
 
 from contacts.models import Contact
 from listings.models import Listing
@@ -21,7 +22,7 @@ def register(request):
         if password == password2:
             # Check username
             if User.objects.filter(username=username).exists():
-                messages.error(request, 'That username is taken')
+                messages.error(request, _('That username is taken'))
                 return redirect('register')
             else:
                 user = User.objects.create_user(username=username, password=password, email=email,
@@ -29,12 +30,12 @@ def register(request):
                 # Login after register
                 user.save()
                 auth.login(request, user)
-                messages.success(request, 'You are now logged in')
+                messages.success(request, _('You are now logged in'))
                 return redirect('index')
                 # messages.success(request, 'You are now registered and can log in')
                 # return redirect('login')
         else:
-            messages.error(request, 'Passwords do not match')
+            messages.error(request, _('Passwords do not match'))
             return redirect('register')
     else:
         return render(request, 'accounts/register.html')
@@ -49,11 +50,11 @@ def login(request):
 
         if user is not None:
             auth.login(request, user)
-            messages.success(request, 'You are now logged in')
+            messages.success(request, _('You are now logged in'))
             next = request.POST.get('next', '/')
             return HttpResponseRedirect(next)
         else:
-            messages.error(request, 'Invalid credentials')
+            messages.error(request, _('Invalid credentials'))
             return redirect('login')
     else:
         return render(request, 'accounts/login.html')
@@ -62,7 +63,7 @@ def login(request):
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
-        messages.success(request, 'You are now logged out')
+        messages.success(request, _('You are now logged out'))
         return redirect('index')
 
 

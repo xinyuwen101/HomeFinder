@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
+
 {% load humanize %}
 
 {% load thumbnail %}
 
-{% block title %}Listings | {% endblock %}
+{% block title %}{% translate 'Listings' %} | {% endblock %}
 
 {% block content %}
 
@@ -13,7 +15,7 @@
     <div class="container">
       <div class="row text-center">
         <div class="col-md-12">
-          <h1 class="display-4">Property Listings</h1>
+          <h1 class="display-4">{% translate 'Property Listings' %}</h1>
         </div>
       </div>
     </div>
@@ -33,7 +35,7 @@
                     <div class="card-img-overlay">
                       <h2>
                       <span
-                          class="badge badge-primary text-white">${{ listing.price | intcomma }}<small>/mo</small></span>
+                          class="badge badge-primary text-white">${{ listing.price | intcomma }}<small>/{% translate 'mo' %}</small></span>
                       </h2>
                     </div>
                   </a>
@@ -47,15 +49,15 @@
                   <hr>
                   <div class="row py-2">
                     <div class="col-6">
-                      <i class="fa fa-bed"></i> {{ listing.bedrooms }} bd
+                      <i class="fa fa-bed"></i> {{ listing.bedrooms }} {% translate 'bd' %}
                     </div>
                     <div class="col-6">
-                      <i class="fa fa-bath"></i> {{ listing.bathrooms|floatformat }} ba
+                      <i class="fa fa-bath"></i> {{ listing.bathrooms|floatformat }} {% translate 'ba' %}
                     </div>
                   </div>
                   <div class="row py-2">
                     <div class="col-6">
-                      <i class="fa fa-th-large"></i> {{ listing.sqft }} sqft
+                      <i class="fa fa-th-large"></i> {{ listing.sqft }} {% translate 'sqft' %}
                     </div>
                     <div class="col-6">
                       <i class="fa fa-home"></i> {{ listing.type|capfirst }}</div>
@@ -66,7 +68,7 @@
           {% endfor %}
         {% else %}
           <div class="col-md-12">
-            <p>No Listings Available</p>
+            <p>{% translate 'No listings available.' %}</p>
           </div>
         {% endif %}
       </div>
