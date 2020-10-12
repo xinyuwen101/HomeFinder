@@ -1,7 +1,7 @@
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
 
 from contacts.models import Contact
 from listings.models import Listing
@@ -50,7 +50,8 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             messages.success(request, 'You are now logged in')
-            return redirect('dashboard')
+            next = request.POST.get('next', '/')
+            return HttpResponseRedirect(next)
         else:
             messages.error(request, 'Invalid credentials')
             return redirect('login')

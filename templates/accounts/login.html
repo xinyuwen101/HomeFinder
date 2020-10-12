@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Account Login | {% endblock %}
+{% block title %}Login | {% endblock %}
 
 {% block content %}
   <section id="login" class="py-5">
@@ -23,6 +23,7 @@
                   <label for="password">Password</label>
                   <input type="password" name="password" class="form-control" id="password" required>
                 </div>
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
                 <input type="submit" value="Log In" class="btn btn-primary btn-block mt-4">
               </form>
             </div>
