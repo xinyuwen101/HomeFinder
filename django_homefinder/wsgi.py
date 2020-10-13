@@ -1,5 +1,5 @@
 """
-WSGI config for django_properties project.
+WSGI config for django_homefinder project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_properties.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_homefinder.settings')
 
 application = get_wsgi_application()
