@@ -11,7 +11,7 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <ul class="navbar-nav">
         <li
-            {% if '/' == request.path %}
+            {% if '/en/' == request.path or '/zh-hans/' == request.path %}
               class="nav-item active mx-3"
             {% else %}
               class="nav-item mx-3"
