@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-12 17:32+0000\n"
+"POT-Creation-Date: 2020-10-13 23:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,7 +38,7 @@ msgstr "验证失败"
 msgid "You are now logged out"
 msgstr "你已登出"
 
-#: contacts/views.py:42
+#: contacts/views.py:41
 msgid "Your message has been submitted"
 msgstr "你的消息已发送"
 
@@ -199,11 +199,8 @@ msgstr "搜索房产"
 msgid "Location or Point of Interest"
 msgstr "地址、邮编或感兴趣的点"
 
-#: templates/listings/upload.html:5
-msgid "Add a Property"
-msgstr "挂出房产"
-
-#: templates/listings/upload.html:14 templates/partials/navbar.html:47
+#: templates/listings/upload.html:5 templates/listings/upload.html:14
+#: templates/partials/navbar.html:47
 msgid "Add a Listing"
 msgstr "挂出房产"
 
@@ -1474,3 +1471,6 @@ msgstr ""
 #: venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:409
 msgid "Connect, get help, or contribute"
 msgstr ""
+
+#~ msgid "Add a Property"
+#~ msgstr "挂出房产"
