@@ -70,7 +70,7 @@ def logout(request):
 @login_required
 def dashboard(request):
     listings = Listing.objects.filter(user=request.user)
-    contacts = Contact.objects.all()
+    contacts = Contact.objects.filter(user_id=request.user.id)
 
     context = {
         'contacts': contacts,

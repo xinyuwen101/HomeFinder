@@ -11,7 +11,7 @@ class Contact(models.Model):
     phone = models.CharField(max_length=100, blank=True)
     message = models.TextField(blank=True)
     contact_date = models.DateTimeField(default=datetime.now, blank=True)
-    user_id = models.IntegerField(blank=True)
+    user_id = models.IntegerField()
 
     class Meta:
         ordering = ('-contact_date',)

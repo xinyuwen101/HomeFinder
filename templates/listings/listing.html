@@ -124,11 +124,7 @@
           <div class="modal-body">
             <form action="{% url 'contact' %}" method="POST">
               {% csrf_token %}
-              {% if user.is_authenticated %}
-                <input type="hidden" name="user_id" value="{{ user.id }}">
-              {% else %}
-                <input type="hidden" name="user_id" value="-1">
-              {% endif %}
+                <input type="hidden" name="user_id" value="{{ listing.user.id }}">
 {#              <input type="hidden" name="realtor_email" value="{{ listing.user.email }}">#}
               <input type="hidden" name="listing_id" value="{{ listing.id }}">
               <input type="hidden" name="listing" value="{{ listing.title }}">
