@@ -73,7 +73,7 @@ WSGI_APPLICATION = 'django_homefinder.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django_properties',
+        'NAME': 'django_homefinder',
         'USER': 'xinyuwen',
         'PASSWORD': '',
         'HOST': 'localhost',

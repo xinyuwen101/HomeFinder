@@ -18,7 +18,7 @@ class Listing(models.Model):
     bathrooms = models.DecimalField(max_digits=2, decimal_places=1, default=0)
     sqft = models.IntegerField(default=0)
     type = models.CharField(max_length=20, default='other')
-    photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/', null=True, blank=True)
+    photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
     photo_1 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     photo_2 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     photo_3 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
@@ -31,3 +31,6 @@ class Listing(models.Model):
 
     def __str__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        super(Listing, self).save(*args, **kwargs)

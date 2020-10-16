@@ -14,7 +14,7 @@ def contact(request):
         phone = request.POST['phone']
         message = request.POST['message']
         user_id = request.POST['user_id']
-        realtor_email = request.POST['realtor_email']
+        # realtor_email = request.POST['realtor_email']
 
         #  Check if user has made inquiry already
         if request.user.is_authenticated:

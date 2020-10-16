@@ -143,10 +143,6 @@ img {
     }
 }
 
-.navbar {
-    background: #10284e;
-}
-
 .has-search .form-control-feedback {
     position: absolute;
     z-index: 2;
@@ -161,4 +157,12 @@ img {
 
 .has-search .form-control {
     padding-left: 2.375rem;
+}
+
+.bg-navy {
+    background: #10284e;
+}
+
+.opacity-9 {
+    opacity: 0.9;
 }

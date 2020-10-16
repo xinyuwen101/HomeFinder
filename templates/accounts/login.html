@@ -19,11 +19,11 @@
                 {% csrf_token %}
                 <div class="form-group">
                   <label for="username">{% translate 'Username' %}</label>
-                  <input type="text" name="username" class="form-control" id="username" value="demo" required>
+                  <input type="text" name="username" class="form-control" id="username" value="test" required>
                 </div>
                 <div class="form-group">
                   <label for="password">{% translate 'Password' %}</label>
-                  <input type="password" name="password" class="form-control" id="password" value="demo2020" required>
+                  <input type="password" name="password" class="form-control" id="password" value="homefinder" required>
                 </div>
                 <input type="hidden" name="next" value="{{ request.GET.next }}">
                 <input type="submit" value="{% translate 'Log In' %}" class="btn btn-primary btn-block mt-4">
