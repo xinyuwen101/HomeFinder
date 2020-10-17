@@ -52,7 +52,12 @@
         <li class="nav-item dropdown mr-3">
           <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown"
              aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-globe"></i> {% trans "切换语言" %}
+            {% if LANGUAGE_CODE == 'en' %}
+            English
+            {% else %}
+            简体中文
+            {% endif %}
+            {% comment %}{% trans "English" %}{% endcomment %}
           </a>
           <form action="{% url 'set_language' %}" method="post" id="lang_form">
             {% csrf_token %}

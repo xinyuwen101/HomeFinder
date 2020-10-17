@@ -9,8 +9,8 @@ class Contact(models.Model):
     name = models.CharField(max_length=200)
     email = models.CharField(max_length=100, blank=True)
     phone = models.CharField(max_length=100, blank=True)
-    message = models.TextField(blank=True)
-    contact_date = models.DateTimeField(default=datetime.now, blank=True)
+    message = models.TextField()
+    contact_date = models.DateTimeField(default=datetime.now)
     user_id = models.IntegerField()
 
     class Meta:

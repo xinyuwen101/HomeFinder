@@ -11,3 +11,8 @@ $(document).on("click", '[data-toggle="lightbox"]', function (event) {
     event.preventDefault();
     $(this).ekkoLightbox();
 });
+
+$("#message").alert();
+window.setTimeout(function () {
+    $(".alert-message").alert('close');
+}, 2000);

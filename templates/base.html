@@ -18,7 +18,7 @@
 
   <title>{% block title %}{% endblock %}HomeFinder</title>
 </head>
-<body>
+<body class="bg-light">
 <!-- NavBar -->
 {% include 'partials/navbar.html' %}
 
@@ -26,9 +26,7 @@
 {% include 'partials/alerts.html' %}
 
 <!-- Main Content -->
-<div class="bg-light">
-  {% block content %}{% endblock %}
-</div>
+{% block content %}{% endblock %}
 
 <!-- Footer -->
 {% include 'partials/footer.html' %}

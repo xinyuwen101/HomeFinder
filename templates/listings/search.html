@@ -19,7 +19,7 @@
           <form action="{% url 'search' %}">
             <div class="form-row">
               <div class="col-md-8 mx-auto mb-4">
-                <div class="input-group">
+                <div class="input-group shadow-sm">
                   <input type="text" class="form-control" name="keywords"
                          placeholder="{% translate 'Location or Point of Interest' %}" value="{{ values.keywords }}">
                   <div class="input-group-append">
@@ -43,14 +43,14 @@
         {% if listings %}
           {% for listing in listings %}
             <div class="col-md-4 mb-4">
-              <div class="card listing-preview">
+              <div class="card listing-preview shadow-sm">
                 {% thumbnail listing.photo_main "400x300" crop="100%" as photo %}
                   <a href="{% url 'listing' listing.id %}">
                     <img class="card-img-top" src="{{ photo.url }}" alt="">
                     <div class="card-img-overlay">
                       <h2>
                       <span
-                          class="badge badge-primary text-white">${{ listing.price | intcomma }}<small>/{% translate 'mo' %}</small></span>
+                          class="badge badge-primary text-white">${{ listing.price|intcomma }}<small>/{% translate 'mo' %}</small></span>
                       </h2>
                     </div>
                   </a>

@@ -28,14 +28,14 @@
         {% if listings %}
           {% for listing in listings %}
             <div class="col-md-4 mb-4">
-              <div class="card listing-preview">
+              <div class="card listing-preview shadow-sm">
                 {% thumbnail listing.photo_main "400x300" crop="100%" as photo %}
                   <a href="{% url 'listing' listing.id %}">
                     <img class="card-img-top" src="{{ photo.url }}" alt="">
                     <div class="card-img-overlay">
                       <h2>
                       <span
-                          class="badge badge-primary text-white">${{ listing.price | intcomma }}<small>/{% translate 'mo' %}</small></span>
+                          class="badge badge-primary text-white">${{ listing.price|intcomma }}<small>/{% translate 'mo' %}</small></span>
                       </h2>
                     </div>
                   </a>

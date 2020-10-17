@@ -153,7 +153,3 @@ MEDIA_URL = '/media/'
 #     constants.ERROR: 'danger'
 # }
 #
-# try:
-#     from .local_settings import *
-# except ImportError:
-#     pass

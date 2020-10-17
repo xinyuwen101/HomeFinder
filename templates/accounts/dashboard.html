@@ -27,33 +27,36 @@
       <h4 class="mb-4">{% translate 'Your Messages' %}</h4>
       <div class="row">
         {% if contacts %}
-          <table class="table table-bordered table-striped">
+          <table class="table table-bordered table-striped shadow-sm">
             <thead>
             <tr>
-              <th style="width: 5%;">#</th>
+              <th class="text-center" style="width: 5%;">#</th>
               <th style="width: 25%;">{% translate 'Listing' %}</th>
               <th style="width: 20%;">{% translate 'Name' %}</th>
-              <th style="width: 15%;">{% translate 'Phone' %}</th>
-              <th style="width: 25%;">{% translate 'Email' %}</th>
-              <th style="width: 10%;">{% translate 'Message' %}</th>
+              <th style="width: 20%;">{% translate 'Phone' %}</th>
+              <th style="width: 20%;">{% translate 'Email' %}</th>
+              <th class="text-center" style="width: 10%;">{% translate 'Message' %}</th>
             </tr>
             </thead>
             <tbody>
             {% for contact in contacts %}
               <tr>
-                <td>{{ forloop.counter }}</td>
+                <td class="text-center">{{ forloop.counter }}</td>
                 <td><a href="{% url 'listing' contact.listing_id %}">{{ contact.listing }}</a></td>
                 <td>{{ contact.name }}</td>
                 <td>{{ contact.phone }}</td>
                 <td><a href="mailto:{{ contact.email }}">{{ contact.email }}</a></td>
-                <td>
-                  <button data-toggle="modal" data-target="#message-modal" class="btn btn-outline-primary btn-block">
+                <td class="text-center">
+                  {% comment %}<button data-toggle="modal" data-target="#message-modal" class="btn btn-outline-primary btn-block">
                     {% translate 'View' %}
-                  </button>
+                  </button>{% endcomment %}
+                  <a href="#" data-toggle="modal" data-target="#message-modal">
+                    <i class="far fa-comment"></i>
+                  </a>
                   <!-- Contact Modal -->
                   <section>
                     <div class="modal fade" id="message-modal" role="dialog">
-                      <div class="modal-dialog">
+                      <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                           <div class="modal-header">
                             <h5 class="modal-title" id="inquiryModalLabel">{% translate 'Message' %}</h5>
@@ -62,7 +65,7 @@
                             </button>
                           </div>
                           <div class="modal-body">
-                            <p>{{ contact.message | linebreaks }}</p>
+                            <p>{{ contact.message|linebreaks }}</p>
                           </div>
                         </div>
                       </div>
@@ -86,29 +89,27 @@
       <h4 class="mb-4">{% translate 'Your Properties' %}</h4>
       <div class="row">
         {% if listings %}
-          <table class="table table-bordered table-striped">
+          <table class="table table-bordered table-striped shadow-sm">
             <thead>
             <tr>
-              <th style="width: 5%;">#</th>
-              <th style="width: 25%;">{% translate 'Listing' %}</th>
-              <th style="width: 15%">{% translate 'Price' %}</th>
+              <th class="text-center" style="width: 5%;">#</th>
+              <th style="width: 25%;">{% translate 'Title' %}</th>
               <th style="width: 45%">{% translate 'Address' %}</th>
-              <th style="width: 10%">{% translate 'Published' %}</th>
+              <th style="width: 15%">{% translate 'Price' %}</th>
+              <th class="text-center" style="width: 10%">{% translate 'Published' %}</th>
             </tr>
             </thead>
             <tbody>
             {% for listing in listings %}
               <tr>
-                <td>{{ forloop.counter }}</td>
+                <td class="text-center">{{ forloop.counter }}</td>
                 <td><a href="{% url 'listing' listing.id %}">{{ listing.title }}</a></td>
-                <td>${{ listing.price | intcomma }}</td>
                 <td>{{ listing.address }} {{ listing.address2 }}, {{ listing.city }}, {{ listing.state }} {{ listing.zipcode }}</td>
-                <td>
-                  <div class="text-center">
-                    {% if listing.is_published %}
-                      <i class="fa fa-check"></i>
-                    {% endif %}
-                  </div>
+                <td>${{ listing.price|intcomma }}</td>
+                <td class="text-center">
+                  {% if listing.is_published %}
+                    <i class="fa fa-check"></i>
+                  {% endif %}
                 </td>
               </tr>
             {% endfor %}
