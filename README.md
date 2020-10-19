@@ -10,9 +10,11 @@ Link: http://hf.xinyuwen.me
 
 ## Features
 
+Write a search page 
+
 ## Install
 
-```shell
+```sh
 pip install -r requirements.txt
 
 python manage.py makemigrations
