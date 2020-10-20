@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.cache import cache
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
@@ -11,7 +12,12 @@ from .models import Listing
 
 
 def listings(request):
-    listings = Listing.objects.filter(is_published=True)
+    key = 'listings'
+    if key in cache:
+        listings = cache.get(key)
+    else:
+        listings = Listing.objects.filter(is_published=True)
+        cache.set(key, listings, 60 * 60)
 
     paginator = Paginator(listings, 6)
     page = request.GET.get('page')
@@ -25,7 +31,12 @@ def listings(request):
 
 
 def listing(request, listing_id):
-    listing = get_object_or_404(Listing, pk=listing_id)
+    key = str(listing_id)
+    if key in cache:
+        listing = cache.get(key)
+    else:
+        listing = get_object_or_404(Listing, pk=listing_id)
+        cache.set(key, listing, 72 * 60 * 60)
 
     context = {
         'listing': listing
