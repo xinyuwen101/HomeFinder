@@ -12,12 +12,7 @@ from .models import Listing
 
 
 def listings(request):
-    key = 'listings'
-    if key in cache:
-        listings = cache.get(key)
-    else:
-        listings = Listing.objects.filter(is_published=True)
-        cache.set(key, listings, 60 * 60)
+    listings = Listing.objects.filter(is_published=True)
 
     paginator = Paginator(listings, 6)
     page = request.GET.get('page')
@@ -31,12 +26,13 @@ def listings(request):
 
 
 def listing(request, listing_id):
+    # implement redis
     key = str(listing_id)
     if key in cache:
         listing = cache.get(key)
     else:
         listing = get_object_or_404(Listing, pk=listing_id)
-        cache.set(key, listing, 72 * 60 * 60)
+        cache.set(key, listing, 30 * 24 * 60 * 60)
 
     context = {
         'listing': listing
