@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-13 23:20+0000\n"
+"POT-Creation-Date: 2020-10-20 05:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,68 +48,72 @@ msgstr "上传成功"
 
 #: listings/views.py:81
 msgid "Information not valid"
-msgstr "信息无效"
+msgstr "无效信息"
 
-#: templates/accounts/dashboard.html:5 templates/accounts/dashboard.html:18
+#: templates/accounts/dashboard.html:5 templates/partials/navbar.html:98
 msgid "Dashboard"
 msgstr "概览"
+
+#: templates/accounts/dashboard.html:18 templates/pages/index.html:9
+msgid "Welcome"
+msgstr "欢迎"
 
 #: templates/accounts/dashboard.html:27
 msgid "Your Messages"
 msgstr "你的消息"
 
-#: templates/accounts/dashboard.html:34 templates/accounts/dashboard.html:93
+#: templates/accounts/dashboard.html:34
 msgid "Listing"
-msgstr "房产"
+msgstr "住房"
 
-#: templates/accounts/dashboard.html:35 templates/listings/listing.html:136
+#: templates/accounts/dashboard.html:35 templates/listings/listing.html:134
 msgid "Name"
 msgstr "姓名"
 
-#: templates/accounts/dashboard.html:36 templates/listings/listing.html:146
+#: templates/accounts/dashboard.html:36 templates/listings/listing.html:144
 msgid "Phone"
 msgstr "电话"
 
 #: templates/accounts/dashboard.html:37 templates/accounts/register.html:25
-#: templates/listings/listing.html:141
+#: templates/listings/listing.html:139
 msgid "Email"
 msgstr "Email"
 
-#: templates/accounts/dashboard.html:38 templates/accounts/dashboard.html:59
-#: templates/listings/listing.html:150
+#: templates/accounts/dashboard.html:38 templates/accounts/dashboard.html:63
+#: templates/listings/listing.html:148
 msgid "Message"
 msgstr "消息"
 
-#: templates/accounts/dashboard.html:51
-msgid "View"
-msgstr "查看"
-
-#: templates/accounts/dashboard.html:77
+#: templates/accounts/dashboard.html:81
 msgid "You have no messages."
 msgstr "你没有任何消息"
 
-#: templates/accounts/dashboard.html:86
+#: templates/accounts/dashboard.html:90
 msgid "Your Properties"
-msgstr "你的房产"
+msgstr "你发布的住房"
 
-#: templates/accounts/dashboard.html:94 templates/listings/upload.html:57
-msgid "Price"
-msgstr "价格"
+#: templates/accounts/dashboard.html:97 templates/listings/upload.html:20
+msgid "Title"
+msgstr "标题"
 
-#: templates/accounts/dashboard.html:95 templates/listings/upload.html:24
+#: templates/accounts/dashboard.html:98 templates/listings/upload.html:24
 msgid "Address"
 msgstr "地址"
 
-#: templates/accounts/dashboard.html:96
+#: templates/accounts/dashboard.html:99 templates/listings/upload.html:57
+msgid "Price"
+msgstr "价格"
+
+#: templates/accounts/dashboard.html:100
 msgid "Published"
 msgstr "已发布"
 
-#: templates/accounts/dashboard.html:118
+#: templates/accounts/dashboard.html:120
 msgid "You have no listings."
-msgstr "你没有任何房产"
+msgstr "你没有发布任何住房"
 
 #: templates/accounts/login.html:5 templates/accounts/login.html:15
-#: templates/partials/navbar.html:115
+#: templates/partials/navbar.html:128
 msgid "Login"
 msgstr "登录"
 
@@ -126,7 +130,7 @@ msgid "Log In"
 msgstr "登录"
 
 #: templates/accounts/register.html:5 templates/accounts/register.html:15
-#: templates/accounts/register.html:45 templates/partials/navbar.html:105
+#: templates/accounts/register.html:45 templates/partials/navbar.html:118
 msgid "Register"
 msgstr "注册"
 
@@ -157,35 +161,31 @@ msgstr "室"
 msgid "ba"
 msgstr "浴"
 
-#: templates/listings/listing.html:90
-msgid "Square Feet"
+#: templates/listings/listing.html:90 templates/listings/listings.html:60
+#: templates/listings/search.html:75 templates/pages/index.html:75
+msgid "sqft"
 msgstr "平方英尺"
 
-#: templates/listings/listing.html:104 templates/listings/listing.html:119
+#: templates/listings/listing.html:106 templates/listings/listing.html:121
 msgid "Contact Property"
-msgstr "联系房产"
+msgstr "联系住房"
 
-#: templates/listings/listing.html:154
+#: templates/listings/listing.html:152
 msgid "Send Message"
 msgstr "发送消息"
 
 #: templates/listings/listings.html:9 templates/partials/navbar.html:38
 msgid "Listings"
-msgstr "全部房产"
+msgstr "全部住房"
 
 #: templates/listings/listings.html:18
 msgid "Property Listings"
-msgstr "全部房产"
-
-#: templates/listings/listings.html:60 templates/listings/search.html:75
-#: templates/pages/index.html:75
-msgid "sqft"
-msgstr "平方英尺"
+msgstr "全部住房"
 
 #: templates/listings/listings.html:71 templates/listings/search.html:87
 #: templates/pages/index.html:86
 msgid "No listings available."
-msgstr "没有任何房产"
+msgstr "没有任何住房"
 
 #: templates/listings/search.html:9 templates/partials/navbar.html:29
 msgid "Search"
@@ -193,20 +193,16 @@ msgstr "搜索"
 
 #: templates/listings/search.html:18
 msgid "Property Search"
-msgstr "搜索房产"
+msgstr "搜索住房"
 
 #: templates/listings/search.html:24 templates/pages/index.html:24
 msgid "Location or Point of Interest"
-msgstr "地址、邮编或感兴趣的点"
+msgstr "地址、邮编或兴趣点"
 
 #: templates/listings/upload.html:5 templates/listings/upload.html:14
 #: templates/partials/navbar.html:47
 msgid "Add a Listing"
-msgstr "挂出房产"
-
-#: templates/listings/upload.html:20
-msgid "Title"
-msgstr "标题"
+msgstr "发布住房"
 
 #: templates/listings/upload.html:28
 msgid "Address 2"
@@ -258,17 +254,13 @@ msgstr "上传照片"
 msgid "Submit"
 msgstr "提交"
 
-#: templates/pages/index.html:9 templates/partials/navbar.html:85
-msgid "Welcome"
-msgstr "欢迎"
-
 #: templates/pages/index.html:18
 msgid "Discover Your New Home"
 msgstr "发现您的新家"
 
 #: templates/pages/index.html:42
 msgid "Latest Listings"
-msgstr "最新挂出"
+msgstr "最新发布"
 
 #: templates/pages/index.html:95
 msgid "View More"
@@ -278,11 +270,11 @@ msgstr "查看更多"
 msgid "Home"
 msgstr "主页"
 
-#: templates/partials/navbar.html:55
-msgid "切换语言"
-msgstr "Languages"
+#: templates/partials/navbar.html:51
+msgid "More"
+msgstr "更多"
 
-#: templates/partials/navbar.html:89
+#: templates/partials/navbar.html:102
 msgid "Logout"
 msgstr "登出"
 
@@ -1471,6 +1463,12 @@ msgstr ""
 #: venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:409
 msgid "Connect, get help, or contribute"
 msgstr ""
+
+#~ msgid "Square Feet"
+#~ msgstr "平方英尺"
+
+#~ msgid "切换语言"
+#~ msgstr "Languages"
 
 #~ msgid "Add a Property"
 #~ msgstr "挂出房产"

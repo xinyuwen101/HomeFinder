@@ -4,7 +4,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-navy">
   <div class="container">
-    <a class="navbar-brand" href="{% url 'index' %}">HomeFinder</a>
+    <a class="navbar-brand mr-5" href="{% url 'index' %}">HomeFinder</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,9 +12,9 @@
       <ul class="navbar-nav">
         <li
             {% if '/en/' == request.path or '/zh-hans/' == request.path %}
-              class="nav-item active mx-3"
+              class="nav-item active mr-3"
             {% else %}
-              class="nav-item mx-3"
+              class="nav-item mr-3"
             {% endif %}
         >
           <a class="nav-link" href="{% url 'index' %}">{% translate 'Home' %}</a>
@@ -46,6 +46,13 @@
         >
           <a class="nav-link" href="{% url 'upload' %}">{% translate 'Add a Listing' %}</a>
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
+             aria-haspopup="true" aria-expanded="false">{% translate 'More' %}</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown01">
+            <a class="dropdown-item" href="https://github.com/xinyuwen101/homefinder" target="_blank">GitHub</a>
+          </div>
+        </li>
       </ul>
 
       <ul class="navbar-nav ml-auto">
@@ -53,9 +60,9 @@
           <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button" data-toggle="dropdown"
              aria-haspopup="true" aria-expanded="false">
             {% if LANGUAGE_CODE == 'en' %}
-            English
+              English
             {% else %}
-            简体中文
+              简体中文
             {% endif %}
             {% comment %}{% trans "English" %}{% endcomment %}
           </a>
@@ -89,7 +96,7 @@
             <a class="nav-link" href="{% url 'dashboard' %}">
               {% translate 'Dashboard' %}</a>
           </li>
-          <li class="nav-item mr-3">
+          <li class="nav-item">
             <a href="javascript:{document.getElementById('logout').submit()}" class="nav-link">
               <i class="fas fa-sign-out-alt"></i> {% translate 'Logout' %}
             </a>
@@ -111,9 +118,9 @@
           </li>
           <li
               {% if 'login' in request.path %}
-                class="nav-item active mr-3"
+                class="nav-item active"
               {% else %}
-                class="nav-item mr-3"
+                class="nav-item"
               {% endif %}
           >
             <a class="nav-link" href="{% url 'login' %}?next={{ request.path | urlencode }}">

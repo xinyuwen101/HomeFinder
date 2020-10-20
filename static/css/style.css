@@ -160,9 +160,13 @@ img {
 }
 
 .bg-navy {
-    background: #10284e;
+    background-color: #005;
 }
 
 .opacity-9 {
     opacity: 0.9;
+}
+
+.bg-price {
+    background-color: #0A0;
 }

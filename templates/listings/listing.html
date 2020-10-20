@@ -84,16 +84,16 @@
         <div class="col-md-5">
           <div class="container">
             <div class="row">
-              <span><span class="h2">${{ listing.price|intcomma }}</span>/{% translate 'mo' %}</span>
+              <h2><span class="h1">${{ listing.price|intcomma }}</span>/{% translate 'mo' %}</h2>
             </div>
             <div class="row mt-4 font-italic">
-              <p class="text-info">{{ listing.bedrooms }} {% translate 'bd' %} | {{ listing.bathrooms|floatformat }} {% translate 'ba' %} | {{ listing.sqft }} {% translate 'sqft' %}</p>
+              <p>{{ listing.bedrooms }} {% translate 'bd' %} | {{ listing.bathrooms|floatformat }} {% translate 'ba' %} | {{ listing.sqft }} {% translate 'sqft' %}</p>
             </div>
-            <div class="row mt-2 font-italic">
-              <p class="text-danger"><i class="fa fa-map-marker-alt"></i> {{ listing.address }} {{ listing.address2 }}, {{ listing.city }}, {{ listing.state }} {{ listing.zipcode }}</p>
+            <div class="row mt-1 font-italic">
+              <p>{{ listing.address }} {{ listing.address2 }}, {{ listing.city }}, {{ listing.state }} {{ listing.zipcode }}</p>
             </div>
-            <div class="row mt-2 font-italic">
-              <p><span class="font-weight-bold">{{ listing.type|upper }}</span> for rent</p>
+            <div class="row mt-1 font-italic badge badge-danger">
+              <div class="text-light">{{ listing.type|title }}</div>
             </div>
             <hr class="mt-4">
             <div class="row mt-4">
