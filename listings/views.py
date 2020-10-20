@@ -27,7 +27,7 @@ def listings(request):
 
 def listing(request, listing_id):
     # implement redis
-    key = str(listing_id)
+    key = 'listing_{}'.format(str(listing_id))
     if key in cache:
         listing = cache.get(key)
     else:
