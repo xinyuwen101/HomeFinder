@@ -26,13 +26,15 @@ def listings(request):
 
 
 def listing(request, listing_id):
-    # implement redis
-    key = 'listing_{}'.format(str(listing_id))
-    if key in cache:
-        listing = cache.get(key)
-    else:
-        listing = get_object_or_404(Listing, pk=listing_id)
-        cache.set(key, listing, 30 * 24 * 60 * 60)
+    # # implement redis
+    # key = 'listing_{}'.format(str(listing_id))
+    # if key in cache:
+    #     listing = cache.get(key)
+    # else:
+    #     listing = get_object_or_404(Listing, pk=listing_id)
+    #     cache.set(key, listing, 30 * 24 * 60 * 60)
+
+    listing = get_object_or_404(Listing, pk=listing_id)
 
     context = {
         'listing': listing

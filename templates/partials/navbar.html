@@ -39,19 +39,12 @@
         </li>
         <li
             {% if 'upload' in request.path %}
-              class="nav-item active mr-3"
+              class="nav-item active"
             {% else %}
-              class="nav-item mr-3"
+              class="nav-item"
             {% endif %}
         >
           <a class="nav-link" href="{% url 'upload' %}">{% translate 'Add a Listing' %}</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
-             aria-haspopup="true" aria-expanded="false">{% translate 'More' %}</a>
-          <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="https://github.com/xinyuwen101/homefinder" target="_blank">GitHub</a>
-          </div>
         </li>
       </ul>
 

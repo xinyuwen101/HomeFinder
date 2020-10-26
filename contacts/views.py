@@ -31,10 +31,10 @@ def contact(request):
 
         # Send email
         # send_mail(
-        #     'Property Listing Message',
+        #     'Property Notification',
         #     'There has been a message for ' + listing + '. Sign into the dashboard page for more information. Do not reply this email',
         #     'properties@xinyuwen.com',
-        #     [realtor_email, 'me.xinyuwen@gmail.com'],
+        #     [realtor_email],
         #     fail_silently=False
         # )
 
