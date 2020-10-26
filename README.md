@@ -18,7 +18,7 @@ Link: http://hf.xinyuwen.me
 * Implemented Internationalization (i18n) that allows users to change languages between English and Chinese.
 
 
-## Install
+## How to install
 
 ```sh
 pip install -r requirements.txt
