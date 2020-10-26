@@ -1,6 +1,6 @@
 # HomeFinder
 
-A real estate property management system created for property rental.
+A real estate property management system for rental properties.
 
 Implemented with Python, Django, HTML, CSS, JavaScript, Bootstrap and Postgres.
 
