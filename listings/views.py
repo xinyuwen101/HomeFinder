@@ -15,14 +15,14 @@ def listings(request):
     listings = Listing.objects.filter(is_published=True)
 
     paginator = Paginator(listings, 6)
-    page = request.GET.get('page')
+    page = request.GET.get("page")
     paged_listings = paginator.get_page(page)
 
     context = {
-        'listings': paged_listings,
+        "listings": paged_listings,
     }
 
-    return render(request, 'listings/listings.html', context)
+    return render(request, "listings/listings.html", context)
 
 
 def listing(request, listing_id):
@@ -36,11 +36,9 @@ def listing(request, listing_id):
 
     listing = get_object_or_404(Listing, pk=listing_id)
 
-    context = {
-        'listing': listing
-    }
+    context = {"listing": listing}
 
-    return render(request, 'listings/listing.html', context)
+    return render(request, "listings/listing.html", context)
 
 
 def search(request):
@@ -50,52 +48,52 @@ def search(request):
         listings = Listing.objects.filter(is_published=True)
 
         # Keywords
-        if 'keywords' in request.GET:
-            keywords = request.GET['keywords']
+        if "keywords" in request.GET:
+            keywords = request.GET["keywords"]
             if keywords:
                 listings = listings.filter(
-                    Q(address__icontains=keywords) |
-                    Q(address2__icontains=keywords) |
-                    Q(city__icontains=keywords) |
-                    Q(state__icontains=keywords) |
-                    Q(zipcode__icontains=keywords) |
-                    Q(description__icontains=keywords) |
-                    Q(type__icontains=keywords)
+                    Q(address__icontains=keywords)
+                    | Q(address2__icontains=keywords)
+                    | Q(city__icontains=keywords)
+                    | Q(state__icontains=keywords)
+                    | Q(zipcode__icontains=keywords)
+                    | Q(description__icontains=keywords)
+                    | Q(type__icontains=keywords)
                 )
 
         paginator = Paginator(listings, 6)
-        page = request.GET.get('page')
+        page = request.GET.get("page")
         paged_listings = paginator.get_page(page)
         listings = paged_listings
 
     context = {
-        'listings': listings,
-        'values': request.GET,
+        "listings": listings,
+        "values": request.GET,
     }
 
-    return render(request, 'listings/search.html', context)
+    return render(request, "listings/search.html", context)
 
 
 @login_required
 def upload(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         form = ListingForm(request.POST, request.FILES)
         if form.is_valid():
             new_listing = form.save(commit=False)
             new_listing.user = request.user
             new_listing.save()
-            messages.success(request, _('Uploaded successfully'))
-            return redirect('listings')
+            messages.success(request, _("Uploaded successfully"))
+            return redirect("listings")
         else:
-            messages.error(request, _('Information not valid'))
-            return redirect('upload')
+            messages.error(request, _("Information not valid"))
+            return redirect("upload")
     else:
         form = ListingForm()
 
     context = {
-        'state_choices': states_choices,
-        'type_choices': type_choices,
-        'form': form
+        "state_choices": states_choices,
+        "type_choices": type_choices,
+        "form": form,
     }
 
-    return render(request, 'listings/upload.html', context)
+    return render(request, "listings/upload.html", context)
