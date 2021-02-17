@@ -1,0 +1,1 @@
+web: gunicorn django_homefinder.wsgi --log-file -
