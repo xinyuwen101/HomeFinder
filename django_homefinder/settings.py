@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 import dj_database_url
+from storages.backends.s3boto3 import S3Boto3Storage
 
 # from django.contrib.messages import constants
 
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     "listings.apps.ListingsConfig",
     "pages.apps.PagesConfig",
     "sorl.thumbnail",
+    "storages",
 ]
 
 MIDDLEWARE = [
@@ -155,3 +157,27 @@ MEDIA_URL = "/media/"
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES["default"].update(db_from_env)
+
+
+# Amazon S3 settings
+
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = os.getenv("AWS_STORAGE_BUCKET_NAME")
+AWS_DEFAULT_ACL = None
+AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
+
+
+# s3 public media settings
+
+
+PUBLIC_MEDIA_LOCATION = "django-property-mgmt/media"
+MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/"
+DEFAULT_FILE_STORAGE = "django_homefinder.settings.PublicMediaStorage"
+
+
+class PublicMediaStorage(S3Boto3Storage):
+    location = "media"
+    default_acl = "public-read"
+    file_overwrite = False
