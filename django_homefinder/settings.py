@@ -171,8 +171,7 @@ AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
 
 # s3 public media settings
 
-
-PUBLIC_MEDIA_LOCATION = "django-property-mgmt/media"
+PUBLIC_MEDIA_LOCATION = "media"
 MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/{PUBLIC_MEDIA_LOCATION}/"
 DEFAULT_FILE_STORAGE = "django_homefinder.settings.PublicMediaStorage"
 
