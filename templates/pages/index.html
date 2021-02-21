@@ -1,103 +1,108 @@
 {% extends 'base.html' %}
-
 {% load i18n %}
-
 {% load humanize %}
-
 {% load thumbnail %}
-
 {% block title %}{% translate 'Welcome' %} | {% endblock %}
-
 {% block content %}
 
-  <!-- Showcase -->
-  <section class="showcase-search py-5 mt-5">
-    <div class="container">
-      <div class="row text-center">
-        <div class="col-md-12">
-          <h1 class="display-4 mb-5">{% translate 'Discover Your New Home' %}</h1>
-          <form action="{% url 'search' %}">
-            <div class="form-row">
-              <div class="col-md-8 mx-auto mb-4">
-                <div class="input-group shadow-sm">
-                  <input type="text" class="form-control" name="keywords"
-                         placeholder="{% translate 'Location or Point of Interest' %}" value="{{ values.keywords }}">
-                  <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit">
-                      <i class="fa fa-search"></i>
-                    </button>
-                  </div>
+<!-- Showcase -->
+<section class="showcase-search py-4 mt-3">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <h1 class="display-4 mb-5">{% translate 'Discover Your New Home' %}</h1>
+        <form action="{% url 'search' %}">
+          <div class="form-row">
+            <div class="col-md-8 mx-auto mb-4">
+              <div class="input-group shadow-sm">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="keywords"
+                  placeholder="{% translate 'Location or Point of Interest' %}"
+                  value="{{ values.keywords }}"
+                />
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="submit">
+                    <i class="fa fa-search"></i>
+                  </button>
                 </div>
               </div>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Listings -->
-  <section id="listings" class="py-5">
-    <div class="container">
-      <h3 class="mb-5">{% translate 'Latest Listings' %}</h3>
-      <div class="row">
-        {% if listings %}
-          {% for listing in listings %}
-            <!-- Listing -->
-            <div class="col-md-4 mb-4">
-              <div class="card listing-preview shadow-sm">
-                {% thumbnail listing.photo_main "400x300" crop="100%" as photo %}
-                <a href="{% url 'listing' listing.id %}">
-                  <img class="card-img-top" src="{{ photo.url }}" alt="">
-                  <div class="card-img-overlay">
-                    <h2>
-                      <span
-                          class="badge bg-price text-white">${{ listing.price|intcomma }}<span class="font-weight-normal">/{% translate 'mo' %}</span></span>
-                    </h2>
-                  </div>
-                </a>
-                {% endthumbnail %}
-                <div class="card-body">
-                  <div class="listing-heading text-center">
-                    <p><i class="fa fa-map-marker-alt"></i> {{ listing.city }}, {{ listing.state }} {{ listing.zipcode }}</p>
-                  </div>
-                  <hr>
-                  <div class="row py-2">
-                    <div class="col-6">
-                      <i class="fa fa-bed"></i> {{ listing.bedrooms }} {% translate 'bd' %}
-                    </div>
-                    <div class="col-6">
-                      <i class="fa fa-bath"></i> {{ listing.bathrooms|floatformat }} {% translate 'ba' %}
-                    </div>
-                  </div>
-                  <div class="row py-2">
-                    <div class="col-6">
-                      <i class="fa fa-th-large"></i> {{ listing.sqft }} {% translate 'sqft' %}
-                    </div>
-                    <div class="col-6">
-                      <i class="fa fa-home"></i> {{ listing.type|capfirst }}</div>
-                  </div>
-                </div>
+<!-- Listings -->
+<section id="listings" class="pt-2 pb-4">
+  <div class="container">
+    <h3 class="mb-3">{% translate 'Latest Listings' %}</h3>
+    <div class="row">
+      {% if listings %} {% for listing in listings %}
+      <!-- Listing -->
+      <div class="col-md-4 mb-4">
+        <div class="card listing-preview shadow-sm">
+          {% thumbnail listing.photo_main "400x300" crop="100%" as photo %}
+          <a href="{% url 'listing' listing.id %}">
+            <img class="card-img-top" src="{{ photo.url }}" alt="" />
+            <div class="card-img-overlay">
+              <h2>
+                <span class="badge bg-price text-white"
+                  >${{ listing.price|intcomma }}<span class="font-weight-normal"
+                    >/{% translate 'mo' %}</span
+                  ></span
+                >
+              </h2>
+            </div>
+          </a>
+          {% endthumbnail %}
+          <div class="card-body">
+            <div class="listing-heading text-center">
+              <p>
+                <i class="fa fa-map-marker-alt"></i> {{ listing.city }}, {{ listing.state }} {{
+                listing.zipcode }}
+              </p>
+            </div>
+            <hr />
+            <div class="row py-2">
+              <div class="col-6">
+                <i class="fa fa-bed"></i> {{ listing.bedrooms }} {% translate 'bd' %}
+              </div>
+              <div class="col-6">
+                <i class="fa fa-bath"></i> {{ listing.bathrooms|floatformat }} {% translate 'ba' %}
               </div>
             </div>
-          {% endfor %}
-        {% else %}
-          <div class="col-md-12">
-            <p>{% translate 'No listings available.' %}</p>
-          </div>
-        {% endif %}
-      </div>
-      <!-- View More -->
-      {% if listings %}
-        <div class="row">
-          <div class="col-md-12">
-            <div class="col-4 mx-auto mt-5">
-            <a href="{% url 'listings' %}" class="btn btn-primary btn-block">{% translate 'View More' %}</a>
-          </div>
+            <div class="row py-2">
+              <div class="col-6">
+                <i class="fa fa-th-large"></i> {{ listing.sqft }} {% translate 'sqft' %}
+              </div>
+              <div class="col-6"><i class="fa fa-home"></i> {{ listing.type|capfirst }}</div>
+            </div>
           </div>
         </div>
+      </div>
+      {% endfor %} {% else %}
+      <div class="col-md-12">
+        <p>{% translate 'No listings available.' %}</p>
+      </div>
       {% endif %}
     </div>
-  </section>
+    <!-- View More -->
+    {% if listings %}
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-4 mx-auto mt-5">
+          <a href="{% url 'listings' %}" class="btn btn-primary btn-block"
+            >{% translate 'View More' %}</a
+          >
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</section>
 
 {% endblock %}
