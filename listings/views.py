@@ -52,13 +52,9 @@ def search(request):
             keywords = request.GET["keywords"]
             if keywords:
                 listings = listings.filter(
-                    Q(address__icontains=keywords)
-                    | Q(address2__icontains=keywords)
                     | Q(city__icontains=keywords)
                     | Q(state__icontains=keywords)
                     | Q(zipcode__icontains=keywords)
-                    | Q(description__icontains=keywords)
-                    | Q(type__icontains=keywords)
                 )
 
         paginator = Paginator(listings, 6)
