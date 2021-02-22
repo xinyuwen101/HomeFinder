@@ -52,7 +52,7 @@ def search(request):
             keywords = request.GET["keywords"]
             if keywords:
                 listings = listings.filter(
-                    | Q(city__icontains=keywords)
+                    Q(city__icontains=keywords)
                     | Q(state__icontains=keywords)
                     | Q(zipcode__icontains=keywords)
                 )
