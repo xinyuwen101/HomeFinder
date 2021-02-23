@@ -57,7 +57,7 @@ def search(request):
                     | Q(zipcode__icontains=keywords)
                 )
 
-        paginator = Paginator(listings, 9)
+        paginator = Paginator(listings, 6)
         page = request.GET.get("page")
         paged_listings = paginator.get_page(page)
         listings = paged_listings
