@@ -155,7 +155,7 @@ msgstr "室"
 #: templates/listings/listing.html:88 templates/listings/listings.html:55
 #: templates/listings/search.html:70 templates/pages/index.html:75
 msgid "ba"
-msgstr "浴"
+msgstr "卫"
 
 #: templates/listings/listing.html:88 templates/listings/listings.html:60
 #: templates/listings/search.html:75 templates/pages/index.html:80
